@@ -87,9 +87,10 @@
   .mini-banner{position:relative; max-width:360px; margin:0 auto 18px; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-soft);}
   .mini-banner video{width:100%; aspect-ratio:3/4; object-fit:cover; display:block;}
   .mini-banner-text{
-    position:absolute; inset:0; margin:0; padding:16px;
+    position:absolute; inset:0; margin:0; padding:10px;
     display:flex; align-items:center; justify-content:center; text-align:center;
-    font-weight:800; font-size:16px; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.4);
+    font-weight:800; font-size:clamp(9px, 3.1vw, 13px); white-space:nowrap;
+    color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.4);
     background:linear-gradient(to top, rgba(30,14,28,.6), rgba(30,14,28,.15) 55%, rgba(30,14,28,.35));
   }
 
@@ -325,19 +326,6 @@
   .faq p{font-size:15px; color:var(--brand-muted); padding-bottom:18px; line-height:1.7;}
   .faq-cta-row{text-align:center; margin-top:8px;}
 
-  /* ---------- mini pricing recap ---------- */
-  .mini-pricing{display:flex; justify-content:center; gap:16px; flex-wrap:wrap; max-width:760px; margin:0 auto 24px;}
-  .mini-card{
-    background:var(--brand-white); border:2px solid #ffe1c9; border-radius:var(--radius-md);
-    box-shadow:var(--shadow-soft); padding:20px 22px; text-align:center; min-width:170px; flex:1;
-    text-decoration:none; color:inherit; transition:.15s;
-  }
-  .mini-card:hover{border-color:var(--brand-primary); transform:translateY(-2px);}
-  .mini-card.popular{border-color:var(--brand-primary);}
-  .mini-card .mini-qty{font-weight:800; font-size:17px;}
-  .mini-card .mini-price{font-weight:800; font-size:22px; color:var(--brand-primary-dark); margin:4px 0;}
-  .mini-card .mini-star{font-size:12px; font-weight:700; color:var(--brand-primary-dark);}
-
   /* ---------- contact ---------- */
   .contact{background:var(--brand-bg-alt);}
   .contact-buttons{display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:20px;}
@@ -423,7 +411,6 @@
   .color-block .price-card,
   .color-block .review-card,
   .color-block .faq details,
-  .color-block .mini-card,
   .color-block .ship-opt,
   .color-block .impact-box,
   .color-block .contact-btn{
@@ -849,29 +836,6 @@
     </div>
     <div class="faq-cta-row">
       <a class="contact-btn" href="https://wa.me/972523347960" target="_blank" rel="noopener" style="display:inline-flex;">💬 לשאלה בוואטסאפ</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== 15. PRICING RECAP ===================== -->
-<section id="buy2" class="color-block c6">
-  <div class="wrap">
-    <h2>מוכנים להעיר את הדמיון לחיים?</h2>
-    <p class="section-sub">בחרו כמה בובות תרצו ליצור – וכל מה שצריך כבר מחכה בפנים.</p>
-    <div class="mini-pricing">
-      <a class="mini-card" href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" target="_blank" rel="noopener">
-        <div class="mini-qty">3 ערכות</div>
-        <div class="mini-price">171 ₪</div>
-      </a>
-      <a class="mini-card popular" href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" target="_blank" rel="noopener">
-        <div class="mini-star">⭐ הבחירה המשפחתית</div>
-        <div class="mini-qty">6 ערכות</div>
-        <div class="mini-price">336 ₪</div>
-      </a>
-      <a class="mini-card" href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" target="_blank" rel="noopener">
-        <div class="mini-qty">12 ערכות</div>
-        <div class="mini-price">660 ₪</div>
-      </a>
     </div>
   </div>
 </section>
