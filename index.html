@@ -3,23 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ערכת יצירה להכנת בובות בבית | הבובות של סיון</title>
-<meta name="description" content="ערכת יצירה להכנת בובה ייחודית בבית. כל החומרים בפנים, בלי הכנות, בלי ניסיון קודם.">
+<title>ערכת יצירה להכנת בובת כף יד | הבובות של סיון</title>
+<meta name="description" content="ערכת יצירה להכנת בובת כף יד. כל החומרים בפנים, בלי הכנות, בלי תפירה, בלי ניסיון קודם. מארזים של 3 / 6 / 12.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* =========================================================
-     צבעים ומיתוג — להחליף כשיישלחו הלוגו/צבעים הרשמיים
-     ========================================================= */
   :root{
-    --brand-primary:#a8398f;      /* מג'נטה מהלוגו */
+    --brand-primary:#a8398f;
     --brand-primary-dark:#7f2a6d;
-    --brand-secondary:#ffc94d;    /* צהוב חם */
-    --brand-accent:#4fc3c8;       /* טורקיז מהפרווה של הבובות */
-    --brand-ink:#332430;          /* טקסט כהה חם */
+    --brand-secondary:#ffc94d;
+    --brand-accent:#4fc3c8;
+    --brand-ink:#332430;
     --brand-muted:#7c6f78;
     --brand-bg:#fffaf7;
-    --brand-bg-alt:#fbeef7;       /* ורוד-מג'נטה עדין */
+    --brand-bg-alt:#fbeef7;
     --brand-white:#ffffff;
     --radius-lg:24px;
     --radius-md:16px;
@@ -46,16 +43,6 @@
   h1,h2,h3{font-weight:800; line-height:1.25;}
   h2{font-size:clamp(24px,4vw,34px); text-align:center; margin-bottom:12px;}
   .section-sub{text-align:center; color:var(--brand-muted); font-size:19px; max-width:640px; margin:0 auto 36px;}
-
-  /* ---------- placeholder image block ---------- */
-  .ph{
-    background:repeating-linear-gradient(45deg, #ffe4cf, #ffe4cf 10px, #fff1e3 10px, #fff1e3 20px);
-    border:2px dashed #ffb98c;
-    border-radius:var(--radius-md);
-    display:flex; align-items:center; justify-content:center;
-    color:#c97a4a; font-size:14px; font-weight:600; text-align:center;
-    min-height:160px; padding:12px;
-  }
 
   /* ---------- header ---------- */
   header{
@@ -90,20 +77,10 @@
   .hero p.lead{font-size:20px; color:var(--brand-muted); margin-bottom:26px; max-width:540px; margin-inline:auto;}
   .hero-img{aspect-ratio:4/3;}
 
-  /* ---------- buy box ---------- */
-  .buybox{
-    background:var(--brand-white);
-    border-radius:var(--radius-lg);
-    box-shadow:var(--shadow-soft);
-    padding:26px;
-    max-width:520px; margin:0 auto;
-    border:1px solid #ffe1c9;
-  }
-
-  /* pricing cards */
+  /* ---------- pricing cards ---------- */
   .pricing-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
-    max-width:1000px; margin:0 auto 36px; align-items:start;
+    max-width:1000px; margin:0 auto 28px; align-items:start;
   }
   @media (max-width:860px){ .pricing-grid{grid-template-columns:1fr; max-width:420px;} }
   .price-card{
@@ -124,9 +101,10 @@
     background:var(--brand-primary); color:#fff; font-size:12px; font-weight:700;
     padding:7px 16px 7px 14px; border-radius:0 var(--radius-lg) 0 var(--radius-md);
   }
-  .price-card .plan-name{font-size:14px; font-weight:700; color:var(--brand-muted); letter-spacing:.3px;}
-  .price-card .plan-amount{font-size:42px; font-weight:800; color:var(--brand-ink); margin:14px 0 2px; font-variant-numeric:tabular-nums;}
-  .price-card .plan-unit{font-size:13px; color:var(--brand-muted); margin-bottom:22px;}
+  .price-card .plan-name{font-size:18px; font-weight:800;}
+  .price-card .plan-amount{font-size:42px; font-weight:800; color:var(--brand-ink); margin:10px 0 2px; font-variant-numeric:tabular-nums;}
+  .price-card .plan-unit{font-size:13px; color:var(--brand-muted); margin-bottom:10px;}
+  .price-card .plan-desc{font-size:14px; color:var(--brand-muted); margin-bottom:18px; min-height:38px;}
   .price-card .plan-features{list-style:none; text-align:right; margin-bottom:26px; display:flex; flex-direction:column; gap:11px;}
   .price-card .plan-features li{display:flex; align-items:flex-start; gap:8px; font-size:15px;}
   .price-card .plan-features li svg{flex-shrink:0; margin-top:3px; color:var(--brand-primary);}
@@ -146,15 +124,19 @@
     .price-card.popular.in-view{transform:none;}
   }
 
-  .shipping{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;}
+  /* shipping / payment info strip */
+  .ship-info{max-width:560px; margin:0 auto; text-align:center;}
+  .shipping{display:flex; justify-content:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;}
   .ship-opt{
     border:2px solid #f1e2d5; border-radius:var(--radius-sm); background:#fffdfb;
-    padding:10px 8px; text-align:center; cursor:pointer; transition:.15s;
+    padding:10px 18px; text-align:center; cursor:pointer; transition:.15s; min-width:150px;
   }
   .ship-opt:hover{border-color:var(--brand-secondary);}
   .ship-opt.selected{border-color:var(--brand-primary); background:#fdf0fa; box-shadow:0 0 0 3px rgba(168,57,143,.15);}
   .ship-opt .ship-label{font-weight:700; font-size:14px;}
   .ship-opt .ship-price{font-size:13px; color:var(--brand-muted);}
+  .ship-info .cta-sub{margin-top:0;}
+
   .cta-btn{
     display:block; width:100%; text-align:center;
     background:linear-gradient(135deg, var(--brand-primary), var(--brand-primary-dark));
@@ -189,12 +171,16 @@
   .card h3{font-size:18px; margin-bottom:6px;}
   .card p{font-size:16px; color:var(--brand-muted);}
 
+  /* ---------- video ---------- */
+  .video-ph{width:100%; height:auto; max-width:760px; margin:0 auto; display:block;}
+
   /* ---------- reinforcement / storytelling ---------- */
   .story{background:var(--brand-bg-alt);}
   .story .wrap{max-width:720px;}
   .story h2{margin-bottom:22px;}
   .story p{font-size:18px; margin-bottom:14px; text-align:center; color:var(--brand-ink);}
   .story p.italic{color:var(--brand-primary-dark); font-weight:700;}
+  .story.on-white{background:var(--brand-white);}
 
   /* ---------- what's inside ---------- */
   .inside-list{max-width:520px; margin:0 auto; list-style:none;}
@@ -208,6 +194,7 @@
     background:var(--brand-accent); color:#fff; display:flex; align-items:center; justify-content:center;
     font-size:14px; font-weight:800;
   }
+  .inside-note{text-align:center; font-weight:700; margin-top:20px; font-size:16px;}
 
   /* ---------- how it works ---------- */
   .step{text-align:center; position:relative; padding-top:10px;}
@@ -218,21 +205,6 @@
   }
   .step h3{font-size:19px; margin-bottom:8px;}
   .step p{font-size:16px; color:var(--brand-muted);}
-
-  .video-intro{
-    display:flex; align-items:center; justify-content:center; gap:24px;
-    max-width:640px; margin:0 auto 40px;
-  }
-  .video-intro h3{font-size:20px; flex:0 1 200px; text-align:right;}
-  .video-intro video{
-    width:240px; max-width:45%; border-radius:var(--radius-md);
-    box-shadow:var(--shadow-soft); background:#000; display:block;
-  }
-  @media (max-width:600px){
-    .video-intro{flex-direction:column; text-align:center;}
-    .video-intro h3{text-align:center; flex:none;}
-    .video-intro video{width:100%; max-width:280px;}
-  }
 
   /* zigzag scroll timeline */
   .zigzag-timeline{position:relative; max-width:520px; margin:0 auto;}
@@ -246,29 +218,6 @@
   @media (max-width:560px){
     .zigzag-step{width:78%;}
   }
-
-  /* ---------- gallery carousel ---------- */
-  .gallery{position:relative;}
-  .gallery-track{
-    display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory;
-    padding:4px 4px 18px; margin:0 -4px;
-    scrollbar-width:thin; scrollbar-color:var(--brand-primary) transparent;
-  }
-  .gallery-track img{
-    flex:0 0 auto; scroll-snap-align:center;
-    width:230px; height:290px; object-fit:cover;
-    border-radius:var(--radius-md); box-shadow:var(--shadow-soft);
-  }
-  @media (max-width:600px){
-    .gallery-track img{width:180px; height:230px;}
-  }
-  .gallery-arrows{display:flex; justify-content:center; gap:14px; margin-top:6px;}
-  .gallery-arrow{
-    width:40px; height:40px; border-radius:50%; border:0; cursor:pointer;
-    background:var(--brand-white); box-shadow:var(--shadow-soft); color:var(--brand-primary-dark);
-    font-size:18px; display:flex; align-items:center; justify-content:center;
-  }
-  .gallery-arrow:hover{background:var(--brand-bg-alt);}
 
   /* ---------- testimonials ---------- */
   .testis{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
@@ -288,9 +237,36 @@
   .impact-box h2{text-align:right; font-size:22px;}
   @media (max-width:800px){ .impact-box h2{text-align:center;} }
   .impact-box p{font-size:17px; color:var(--brand-ink);}
+  .impact-box p.lead-line{font-weight:700; color:var(--brand-primary-dark);}
 
-  /* ---------- video ---------- */
-  .video-ph{width:100%; height:auto; max-width:760px; margin:0 auto; display:block;}
+  /* ---------- FAQ ---------- */
+  .faq{max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:12px;}
+  .faq details{
+    background:var(--brand-white); border-radius:var(--radius-md);
+    box-shadow:var(--shadow-soft); padding:6px 20px;
+  }
+  .faq summary{
+    cursor:pointer; font-weight:700; font-size:17px; padding:16px 0;
+    list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:'+'; font-size:24px; font-weight:400; color:var(--brand-primary); flex-shrink:0; transition:transform .2s;}
+  .faq details[open] summary::after{transform:rotate(45deg);}
+  .faq p{font-size:15px; color:var(--brand-muted); padding-bottom:18px; line-height:1.7;}
+  .faq-cta-row{text-align:center; margin-top:8px;}
+
+  /* ---------- mini pricing recap ---------- */
+  .mini-pricing{display:flex; justify-content:center; gap:16px; flex-wrap:wrap; max-width:760px; margin:0 auto 24px;}
+  .mini-card{
+    background:var(--brand-white); border:2px solid #ffe1c9; border-radius:var(--radius-md);
+    box-shadow:var(--shadow-soft); padding:20px 22px; text-align:center; min-width:170px; flex:1;
+    text-decoration:none; color:inherit; transition:.15s;
+  }
+  .mini-card:hover{border-color:var(--brand-primary); transform:translateY(-2px);}
+  .mini-card.popular{border-color:var(--brand-primary);}
+  .mini-card .mini-qty{font-weight:800; font-size:17px;}
+  .mini-card .mini-price{font-weight:800; font-size:22px; color:var(--brand-primary-dark); margin:4px 0;}
+  .mini-card .mini-star{font-size:12px; font-weight:700; color:var(--brand-primary-dark);}
 
   /* ---------- contact ---------- */
   .contact{background:var(--brand-bg-alt);}
@@ -304,6 +280,7 @@
 
   /* ---------- footer ---------- */
   footer{padding:30px 0; text-align:center; color:var(--brand-muted); font-size:14px;}
+  footer .biz-info{font-size:12px; margin-top:8px; opacity:.8;}
 
   /* sticky mobile CTA */
   .sticky-cta{
@@ -327,20 +304,21 @@
   </div>
 </header>
 
-<!-- ===================== HERO ===================== -->
+<!-- ===================== 1. HERO ===================== -->
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow">ערכת יצירה להכנת בובות בבית</span>
+      <span class="eyebrow">ערכת יצירה להכנת בובת כף יד</span>
       <h1>הרגע שבו <span>היצירה מתעוררת לחיים</span></h1>
-      <p class="lead">פשוט פותחים את הערכה, יוצרים בובה ייחודית, ומגלים שהיצירה היא רק ההתחלה. כשהדבק מתייבש, הקסם רק מתחיל.</p>
-      <p class="lead" style="font-weight:700; color:var(--brand-ink);">כל החומרים בפנים | בלי הכנות | ללא ניסיון קודם</p>
+      <p class="lead">פשוט פותחים את הערכה, יוצרים בובה ייחודית ומגלים שהיצירה היא רק ההתחלה. כשהדבק מתייבש, הקסם רק מתחיל.</p>
+      <p class="lead" style="font-weight:700; color:var(--brand-ink);">כל החומרים בפנים | בלי הכנות | ללא תפירה | ללא ניסיון קודם</p>
+      <a href="#buy" class="cta-btn" style="max-width:280px; margin:0 auto;">לבחירת המארז שלי ↓</a>
     </div>
     <img class="hero-img" style="border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); object-fit:cover; width:100%;" src="images/mom-daughter.jpg" alt="אמא וילדה משחקות עם בובת כף יד שיצרו">
   </div>
 </section>
 
-<!-- ===================== TRUST ICONS ===================== -->
+<!-- ===================== 2. TRUST ICONS ===================== -->
 <div class="wrap">
   <div class="trust">
     <div class="trust-item"><span class="dot"></span> למעלה מעשור של ניסיון</div>
@@ -350,11 +328,74 @@
   </div>
 </div>
 
-<div class="wrap" style="padding:36px 0 0;">
-  <img src="images/kids-circle.jpg" alt="ילדים מציגים את הבובות שיצרו" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); object-fit:cover; max-height:420px;">
-</div>
+<!-- ===================== 3+4. PRICING + SHIPPING ===================== -->
+<section id="buy" style="background:var(--brand-bg-alt); padding-top:44px;">
+  <div class="wrap">
+    <h2>כמה בובות תרצו ליצור?</h2>
+    <p class="section-sub">בחרו את המארז שמתאים לכם – כל ערכה מכילה את כל החומרים הדרושים להכנת בובת כף יד אחת.</p>
 
-<!-- ===================== FEATURE CARDS ===================== -->
+    <div class="pricing-grid" id="pricingGrid">
+      <div class="price-card">
+        <p class="plan-name">3 ערכות</p>
+        <div class="plan-amount">171 ₪</div>
+        <p class="plan-unit">57 ₪ לערכה</p>
+        <p class="plan-desc">מתאים לאחים, חברים או לזמן יצירה משותף.</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> דבק והוראות הכנה מצולמות</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל ילד יוצר בובה משלו</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 3</a>
+      </div>
+
+      <div class="price-card popular">
+        <span class="star-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          הבחירה המשפחתית
+        </span>
+        <p class="plan-name">6 ערכות</p>
+        <div class="plan-amount">336 ₪</div>
+        <p class="plan-unit">56 ₪ לערכה</p>
+        <p class="plan-desc">מושלם למשפחה, לחברים ולזמן יצירה משותף.</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> שש בובות שונות וייחודיות</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> יותר ילדים, יותר דמיון, יותר משחק</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 6</a>
+      </div>
+
+      <div class="price-card">
+        <p class="plan-name">12 ערכות</p>
+        <div class="plan-amount">660 ₪</div>
+        <p class="plan-unit">55 ₪ לערכה</p>
+        <p class="plan-desc">כשכולם רוצים להצטרף לחגיגה — מתאים למשפחה המורחבת, לאירוח או לקבוצה של ילדים.</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> המחיר המשתלם ביותר לערכה</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מספיק ליצירה משותפת של קבוצה שלמה</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 12</a>
+      </div>
+    </div>
+
+    <div class="ship-info">
+      <div class="shipping">
+        <div class="ship-opt selected" data-ship="delivery">
+          <div class="ship-label">🚚 משלוח עד הבית</div>
+          <div class="ship-price">55 ₪</div>
+        </div>
+        <div class="ship-opt" data-ship="pickup">
+          <div class="ship-label">🏠 איסוף עצמי</div>
+          <div class="ship-price">ללא עלות</div>
+        </div>
+      </div>
+      <p class="cta-sub">תשלום מאובטח • משלוחים לכל הארץ • ברכישה מאשרים את <a href="terms.html" style="color:var(--brand-primary-dark); text-decoration:underline;">תקנון ותנאי הרכישה</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5. FEATURE CARDS ===================== -->
 <section>
   <div class="wrap">
     <div class="cards">
@@ -371,61 +412,65 @@
       <div class="card">
         <img class="icon" src="images/gallery-15.jpg" alt="שורה של בובות שונות ומגוונות">
         <h3>כל בובה יחידה במינה</h3>
-        <p>מגוון עצום של שילובים מבטיח שאין שתי בובות זהות.</p>
+        <p>מגוון גדול של שילובים מאפשר לכל ילד ליצור בובה עם אופי משלה.</p>
       </div>
       <div class="card">
         <img class="icon" src="images/gallery-04.jpg" alt="ילדה משחקת עם הבובות שיצרה">
         <h3>הבובה ממשיכה לחיות</h3>
-        <p>הילדים לא רק יוצרים, הם משחקים איתה שוב ושוב.</p>
+        <p>הילדים לא רק יוצרים אותה – הם ממשיכים לשחק איתה שוב ושוב.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== STORY / REINFORCEMENT ===================== -->
+<!-- ===================== 6. DEMO VIDEO ===================== -->
+<section style="background:var(--brand-bg-alt);">
+  <div class="wrap">
+    <h2>מערכה אחת קטנה לבובה עם חיים משלה</h2>
+    <video class="video-ph" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
+      <source src="images/demo.mp4" type="video/mp4">
+      הדפדפן שלך לא תומך בהצגת וידאו מובנית. <a href="images/demo.mp4">לחצו כאן לצפייה בסרטון</a>
+    </video>
+  </div>
+</section>
+
+<!-- ===================== 7. STORY / REINFORCEMENT ===================== -->
 <section class="story">
   <div class="wrap">
     <h2>הנשק הסודי שלך נגד ה"משעמם לי"</h2>
     <p>יש ימים שכל מה שצריך הוא לפתוח ערכה אחת קטנה.</p>
     <p class="italic">בלי מסכים. בלי הכנות. בלי לרוץ לקנות חומרים.</p>
     <p>פשוט מתיישבים יחד, פותחים את הערכה ונותנים לידיים ולדמיון לעשות את שלהם.</p>
-    <p>בין אם זה אחר צהריים בבית, יום חופש או סוף שבוע משפחתי – זו פעילות שהופכת זמן פנוי לזמן איכות אמיתי.</p>
+    <p>בין אם זה אחר צהריים בבית, יום חופש, סוף שבוע משפחתי או מפגש עם חברים – זו פעילות שהופכת זמן פנוי לזמן איכות אמיתי.</p>
     <p>ואז מגיע הרגע הכי מיוחד. כשהבובה מוכנה, היא כבר לא עוד יצירה שמניחים על המדף. פתאום היא מתחילה להיות חלק מהבית. מהמשחק. מהצחוקים. ומהרגעים הקטנים של היומיום.</p>
     <p class="italic">יש יצירות שמסיימים להכין. ויש יצירות שרק מתחילות לחיות.</p>
     <p>לפעמים, כל מה שצריך כדי שהדמיון יתעורר לחיים הוא בובה אחת קטנה.</p>
   </div>
 </section>
 
-<!-- ===================== WHAT'S INSIDE ===================== -->
+<!-- ===================== 8. WHAT'S INSIDE ===================== -->
 <section>
   <div class="wrap">
-    <h2>מה בערכה?</h2>
+    <h2>הכול כבר בפנים</h2>
     <p class="section-sub">חשבנו על הכול, כדי שלכם יישאר רק ליהנות מהיצירה.</p>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; max-width:900px; margin:0 auto;">
       <img src="images/boy-materials.jpg" alt="כל חומרי היצירה שבערכה" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); object-fit:cover;">
       <ul class="inside-list" style="margin:0;">
-        <li><span class="check">✓</span> חלקי הבובה</li>
-        <li><span class="check">✓</span> דבק איכותי, בטיחותי ומתאים לילדים</li>
+        <li><span class="check">✓</span> כל חלקי הבובה</li>
+        <li><span class="check">✓</span> דבק איכותי ומתאים ליצירה</li>
         <li><span class="check">✓</span> הוראות הכנה מפורטות ומצולמות</li>
-        <li><span class="check">✓</span> כל מה שנשאר הוא להצטייד בזוג מספריים… ולהתחיל ליצור</li>
       </ul>
     </div>
+    <p class="inside-note">מה צריך מהבית? רק זוג מספריים… ומתחילים ליצור.</p>
     <style>@media (max-width:700px){ section div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;} }</style>
   </div>
 </section>
 
-<!-- ===================== HOW IT WORKS ===================== -->
+<!-- ===================== 9. HOW IT WORKS ===================== -->
 <section style="background:var(--brand-bg-alt);">
   <div class="wrap">
     <h2>איך זה עובד?</h2>
-    <p class="section-sub">ככה עושים קסמים ב-3 צעדים פשוטים:</p>
-    <div class="video-intro">
-      <h3>איך נראית היצירה בפועל?</h3>
-      <video controls playsinline preload="metadata">
-        <source src="images/demo2.mp4" type="video/mp4">
-        הדפדפן שלך לא תומך בהצגת וידאו מובנית. <a href="images/demo2.mp4">לחצו כאן לצפייה בסרטון</a>
-      </video>
-    </div>
+    <p class="section-sub">ככה עושים קסמים בשלושה צעדים פשוטים</p>
     <div class="zigzag-timeline" id="zigzagTimeline">
       <svg class="zigzag-line" id="zigzagSvg" aria-hidden="true">
         <defs>
@@ -445,7 +490,7 @@
         <div class="step zigzag-step side-left">
           <div class="num">2</div>
           <h3>יוצרים</h3>
-          <p>מחברים, מדביקים ורואים איך לאט־לאט הבובה מקבלת צבע, חיוך ואופי משלה. גם אם ממש מתחשק... חכו רגע עם היד בתוך הבובה עד שהדבק יתייבש. ההמתנה הקטנה הזאת שווה את התוצאה.</p>
+          <p>מחברים, מדביקים ורואים איך לאט־לאט הבובה מקבלת צבע, חיוך ואופי משלה. גם אם ממש מתחשק — מחכים רגע לפני שמכניסים את היד לבובה, עד שהדבק מתייבש. ההמתנה הקטנה הזאת שווה את התוצאה.</p>
         </div>
         <div class="step zigzag-step side-right">
           <div class="num">3</div>
@@ -457,72 +502,28 @@
   </div>
 </section>
 
-<!-- ===================== EMOTIONAL CLOSING ===================== -->
-<section class="story">
+<!-- ===================== 10. THE MOMENT ===================== -->
+<section class="story on-white">
   <div class="wrap">
     <p>ואז… יש רגע אחד שאי אפשר להסביר.</p>
     <p>הרגע שבו היד נכנסת בפעם הראשונה אל תוך הבובה.</p>
     <p class="italic">פתאום יש לה קול. יש לה שם. יש לה אופי.</p>
-    <p>ובאותו רגע היא כבר לא עוד יצירה. היא הופכת לחלק מהמשפחה.</p>
+    <p>ובאותו רגע היא כבר לא עוד יצירה. היא הופכת לחלק מהמשחק. מהדמיון. ומהסיפורים שהילדים ממציאים בעצמם.</p>
     <p>ואולי זו בדיוק הסיבה שהיא נשארת איתם הרבה אחרי שהיצירה מסתיימת.</p>
   </div>
 </section>
 
-<!-- ===================== GALLERY CAROUSEL ===================== -->
-<section class="gallery">
+<!-- ===================== 11. SAME KIT, ENDLESS POSSIBILITIES ===================== -->
+<section class="story">
   <div class="wrap">
-    <h2>רגעים מהבית שלכם</h2>
-    <p class="section-sub">עוד ילדים ומשפחות שכבר יצרו את הבובה שלהם</p>
-    <div class="gallery-track" id="galleryTrack">
-      <img src="images/gallery-01.jpg" alt="אח ואחות עם הבובות שיצרו" loading="lazy">
-      <img src="images/gallery-02.jpg" alt="משפחה שלמה יוצרת יחד סביב השולחן" loading="lazy">
-      <img src="images/gallery-03.jpg" alt="שני ילדים יוצרים ביחד" loading="lazy">
-      <img src="images/gallery-04.jpg" alt="ילדה עם שתי בובות כף יד" loading="lazy">
-      <img src="images/gallery-05.jpg" alt="שני אחים מחייכים עם הבובה" loading="lazy">
-      <img src="images/gallery-06.jpg" alt="ילד עם בובת אצבע ובובת כף יד" loading="lazy">
-      <img src="images/gallery-07.jpg" alt="ילד קטן משחק עם הבובה בחוץ" loading="lazy">
-      <img src="images/gallery-08.jpg" alt="ילד עם בובה ירוקה בחצר" loading="lazy">
-      <img src="images/gallery-09.jpg" alt="ילד יוצר את הבובה עם אמא" loading="lazy">
-      <img src="images/gallery-10.jpg" alt="הבובה המוגמרת עם שקיות הערכה" loading="lazy">
-      <img src="images/gallery-11.jpg" alt="ילד עם בובה כחולה בחוץ" loading="lazy">
-      <img src="images/gallery-12.jpg" alt="תקריב על בובה צבעונית" loading="lazy">
-      <img src="images/gallery-13.jpg" alt="ילדה עם בובת פלמינגו ורודה" loading="lazy">
-      <img src="images/gallery-14.jpg" alt="ילד מחייך עם הבובה שיצר" loading="lazy">
-      <img src="images/gallery-15.jpg" alt="שורה של בובות שונות ומגוונות" loading="lazy">
-    </div>
-    <div class="gallery-arrows">
-      <button class="gallery-arrow" id="galleryPrev" aria-label="הקודם">›</button>
-      <button class="gallery-arrow" id="galleryNext" aria-label="הבא">‹</button>
-    </div>
+    <h2>אותה ערכה. אינסוף אפשרויות.</h2>
+    <p>צבעים, שיער, עיניים, פרטים והמון מקום לדמיון.</p>
+    <p>כל ילד מתחיל עם ערכה – ומסיים עם בובה שהיא לגמרי שלו.</p>
+    <p class="italic">אין שתי בובות שחייבות להיראות אותו הדבר, וזה בדיוק הקסם.</p>
   </div>
 </section>
 
-<!-- ===================== TESTIMONIALS ===================== -->
-<section style="background:var(--brand-bg-alt);">
-  <div class="wrap">
-    <h2>מה ההורים אומרים</h2>
-    <p class="section-sub">TODO: להחליף בעדויות אמיתיות של לקוחות שרכשו את המוצר הזה</p>
-    <div class="testis">
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p>"טקסט עדות לדוגמה — הילדים שלי לא הפסיקו לשחק עם הבובה כל השבוע."</p>
-        <div class="who">— שם הלקוח/ה</div>
-      </div>
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p>"טקסט עדות לדוגמה — פעילות מושלמת לחופש הגדול, גם הקטנה בת ה-5 הצליחה."</p>
-        <div class="who">— שם הלקוח/ה</div>
-      </div>
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p>"טקסט עדות לדוגמה — איכות מדהימה והגיע מהר, ממליצה בחום."</p>
-        <div class="who">— שם הלקוח/ה</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SOCIAL IMPACT ===================== -->
+<!-- ===================== 13. SOCIAL IMPACT ===================== -->
 <section class="impact">
   <div class="wrap">
     <div class="impact-box">
@@ -532,110 +533,111 @@
       </video>
       <div>
         <h2>עושים טוב בבית, עושים טוב בעולם</h2>
-        <p>ערכות היצירה נארזות באהבה על ידי אנשים עם מוגבלויות ומתמודדי נפש במסגרת מפעל מוגן של האגודה לבריאות הציבור. כשאתם בוחרים ליצור עם "הבובות של סיון", אתם לא רק מכניסים הביתה פעילות יצירתית ומשמעותית — אתם גם לוקחים חלק בעשייה חברתית שמעניקה לאנשים הזדמנות אמיתית לעבוד, ליצור ולהרגיש שייכים.</p>
+        <p class="lead-line">כל ערכה יוצרת מעגל של טוב.</p>
+        <p>ערכות היצירה של "הבובות של סיון" נארזות באהבה במסגרת מפעל מוגן של האגודה לבריאות הציבור, על ידי אנשים עם מוגבלויות ומתמודדי נפש.</p>
+        <p>כשאתם בוחרים ליצור עם "הבובות של סיון", אתם לא רק מכניסים הביתה פעילות יצירתית ומשמעותית. אתם גם לוקחים חלק בעשייה חברתית שמעניקה לאנשים הזדמנות אמיתית לעבוד, ליצור ולהרגיש שייכים.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== VIDEO ===================== -->
-<section>
+<!-- ===================== 14. FAQ ===================== -->
+<section style="background:var(--brand-bg-alt);">
   <div class="wrap">
-    <h2>הצצה לערכה בפעולה</h2>
-    <video class="video-ph" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
-      <source src="images/demo.mp4" type="video/mp4">
-      הדפדפן שלך לא תומך בהצגת וידאו מובנית. <a href="images/demo.mp4">לחצו כאן לצפייה בסרטון</a>
-    </video>
+    <h2>שאלות נפוצות</h2>
+    <div class="faq">
+      <details>
+        <summary>לאיזה גיל הערכה מתאימה?</summary>
+        <p>הערכה מתאימה לילדים ולמבוגרים שאוהבים ליצור. ילדים צעירים יכולים ליצור בליווי מבוגר, וילדים גדולים יותר יכולים לעבוד באופן עצמאי בהתאם ליכולת האישית שלהם.</p>
+      </details>
+      <details>
+        <summary>צריך לדעת לתפור?</summary>
+        <p>ממש לא. אין תפירה בכלל. הבובה מורכבת באמצעות הדבקה והוראות פשוטות וברורות.</p>
+      </details>
+      <details>
+        <summary>צריך ניסיון ביצירה?</summary>
+        <p>לא. הערכה נבנתה כך שגם מי שלא מחשיב את עצמו "יצירתי" יכול ליהנות מהדרך ולהצליח.</p>
+      </details>
+      <details>
+        <summary>מה צריך להכין בבית?</summary>
+        <p>כמעט כלום. כל חומרי היצירה נמצאים בערכה. צריך רק זוג מספריים.</p>
+      </details>
+      <details>
+        <summary>כמה זמן לוקח להכין בובה?</summary>
+        <p>כ־30–45 דקות, בהתאם לגיל ולקצב היצירה.</p>
+      </details>
+      <details>
+        <summary>האם כל הבובות יוצאות אותו הדבר?</summary>
+        <p>ממש לא – וזה חלק מהקסם. מגוון השילובים מאפשר לכל ילד ליצור בובה ייחודית עם מראה ואופי משלה.</p>
+      </details>
+      <details>
+        <summary>מה עושים עם הבובה אחרי שמסיימים?</summary>
+        <p>פה מתחיל החלק שאנחנו הכי אוהבים. נותנים לבובה שם, קול ואופי – וממשיכים איתה למשחק, להצגות, לסיפורים ולמשחקי דמיון.</p>
+      </details>
+      <details>
+        <summary>איך מקבלים את ההזמנה?</summary>
+        <p>ניתן לבחור במשלוח עד הבית בעלות 55 ₪ או באיסוף עצמי ללא עלות.</p>
+      </details>
+      <details>
+        <summary>תוך כמה זמן ההזמנה מגיעה?</summary>
+        <p>זמן הטיפול בהזמנה הוא עד 7 ימי עסקים ממועד ההזמנה והתשלום, בתוספת זמן המשלוח בפועל של חברת השילוח.</p>
+      </details>
+      <details>
+        <summary>רוצים להזמין כמות גדולה יותר?</summary>
+        <p>להזמנות גדולות, מוסדות, ארגונים ואירועים ניתן לפנות אלינו ישירות.</p>
+      </details>
+    </div>
+    <div class="faq-cta-row">
+      <a class="contact-btn" href="https://wa.me/972523347960" target="_blank" rel="noopener" style="display:inline-flex;">💬 לשאלה בוואטסאפ</a>
+    </div>
   </div>
 </section>
 
-<!-- ===================== BUY BOX ===================== -->
-<section id="buy" style="background:var(--brand-bg-alt);">
+<!-- ===================== 15. PRICING RECAP ===================== -->
+<section id="buy2">
   <div class="wrap">
-    <h2>מוכנים ליצור?</h2>
-    <p class="section-sub">בחרו כמה בובות תרצו ליצור</p>
-
-    <div class="pricing-grid" id="pricingGrid">
-      <div class="price-card">
-        <p class="plan-name">3 בובות</p>
-        <div class="plan-amount">171₪</div>
-        <p class="plan-unit">57₪ ליחידה · לזמן יצירה</p>
-        <ul class="plan-features">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה כלולים</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> הוראות הכנה מצולמות שלב-אחר-שלב</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מושלם לניסיון ראשון</li>
-        </ul>
-        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">מוסיפים לסל</a>
-      </div>
-
-      <div class="price-card">
-        <p class="plan-name">6 בובות</p>
-        <div class="plan-amount">336₪</div>
-        <p class="plan-unit">56₪ ליחידה · למשפחה ולחברים</p>
-        <ul class="plan-features">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל היתרונות של חבילת 3</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> חיסכון בעלות ליחידה</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מספיק לכל הילדים בבית</li>
-        </ul>
-        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">מוסיפים לסל</a>
-      </div>
-
-      <div class="price-card popular">
-        <span class="star-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          הכי פופולרי
-        </span>
-        <p class="plan-name">12 בובות</p>
-        <div class="plan-amount">660₪</div>
-        <p class="plan-unit">55₪ ליחידה + מתנה · לחגיגה קטנה</p>
-        <ul class="plan-features">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל היתרונות הקודמים</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> המחיר הכי משתלם ליחידה</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מתנה מיוחדת על ההזמנה</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> אידיאלי לגן, לכיתה או למסיבה</li>
-        </ul>
-        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">מוסיפים לסל</a>
-      </div>
-    </div>
-
-    <div class="buybox">
-      <div class="shipping">
-        <div class="ship-opt selected" data-ship="delivery">
-          <div class="ship-label">🚚 משלוח עד הבית</div>
-          <div class="ship-price">55₪</div>
-        </div>
-        <div class="ship-opt" data-ship="pickup">
-          <div class="ship-label">🏠 איסוף עצמי</div>
-          <div class="ship-price">חינם</div>
-        </div>
-      </div>
-      <p class="cta-sub">תשלום מאובטח • משלוח לכל הארץ • ברכישה מאשרים את <a href="terms.html" style="color:var(--brand-primary-dark); text-decoration:underline;">תקנון ותנאי הרכישה</a></p>
+    <h2>מוכנים להעיר את הדמיון לחיים?</h2>
+    <p class="section-sub">בחרו כמה בובות תרצו ליצור – וכל מה שצריך כבר מחכה בפנים.</p>
+    <div class="mini-pricing">
+      <a class="mini-card" href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" target="_blank" rel="noopener">
+        <div class="mini-qty">3 ערכות</div>
+        <div class="mini-price">171 ₪</div>
+      </a>
+      <a class="mini-card popular" href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" target="_blank" rel="noopener">
+        <div class="mini-star">⭐ הבחירה המשפחתית</div>
+        <div class="mini-qty">6 ערכות</div>
+        <div class="mini-price">336 ₪</div>
+      </a>
+      <a class="mini-card" href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" target="_blank" rel="noopener">
+        <div class="mini-qty">12 ערכות</div>
+        <div class="mini-price">660 ₪</div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===================== CONTACT ===================== -->
+<!-- ===================== 16. WHATSAPP ===================== -->
 <section class="contact">
   <div class="wrap" style="text-align:center;">
-    <h2>יש שאלה לפני שרוכשים?</h2>
-    <p class="section-sub">נשמח לעזור — כתבו לנו בוואטסאפ או התקשרו</p>
+    <h2>נשארה שאלה לפני ההזמנה?</h2>
+    <p class="section-sub" style="margin-bottom:20px;">כתבו לנו בוואטסאפ ונשמח לעזור.</p>
     <div class="contact-buttons">
-      <a class="contact-btn" href="https://wa.me/972523347960" target="_blank" rel="noopener">💬 וואטסאפ</a>
-      <a class="contact-btn" href="tel:+972523347960">📞 052-3347960</a>
-      <a class="contact-btn" href="mailto:Sivanz25@gmail.com">✉️ Sivanz25@gmail.com</a>
+      <a class="contact-btn" href="https://wa.me/972523347960" target="_blank" rel="noopener">💬 יש לי שאלה</a>
     </div>
   </div>
 </section>
 
+<!-- ===================== 17. FOOTER ===================== -->
 <footer>
   <div class="wrap">
-    © <span id="year"></span> הבובות של סיון. כל הזכויות שמורות. · <a href="terms.html" style="color:var(--brand-muted); text-decoration:underline;">תקנון ותנאי רכישה</a>
+    © <span id="year"></span> הבובות של סיון. כל הזכויות שמורות. · <a href="terms.html" style="color:var(--brand-muted); text-decoration:underline;">תקנון ותנאי רכישה ופרטיות</a>
+    <div class="biz-info">הבובות של סיון · סיון זמיר רביבו · ע.מ. 052986825 · רח' התנופה 2, טירת כרמל</div>
   </div>
 </footer>
 
 <!-- Sticky mobile CTA -->
 <div class="sticky-cta">
-  <a href="#buy" class="cta-btn">לרכישה עכשיו 🧵</a>
+  <a href="#buy" class="cta-btn">לבחירת מארז ורכישה</a>
 </div>
 
 <script>
@@ -693,7 +695,6 @@
         var isRight = step.classList.contains('side-right');
         var stepLeft = r.left - cRect.left;
         var stepRight = r.right - cRect.left;
-        // אמצע הרווח הפנוי (לא הטקסט): מימין לטקסט אם הטקסט בצד ימין, ולהפך
         var x = isRight ? (stepLeft / 2) : (stepRight + (W - stepRight) / 2);
         pts.push({x:x, top:top, bottom:bottom});
       });
@@ -739,21 +740,6 @@
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', onResize);
     update();
-  })();
-
-  // חצי קרוסלת הגלריה
-  (function(){
-    var track = document.getElementById('galleryTrack');
-    var prev = document.getElementById('galleryPrev');
-    var next = document.getElementById('galleryNext');
-    if(!track || !prev || !next) return;
-    function step(dir){
-      var card = track.querySelector('img');
-      var amount = card ? (card.getBoundingClientRect().width + 14) * 2 : 300;
-      track.scrollBy({left: dir * amount, behavior:'smooth'});
-    }
-    prev.addEventListener('click', function(){ step(1); });
-    next.addEventListener('click', function(){ step(-1); });
   })();
 </script>
 
