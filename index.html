@@ -165,6 +165,11 @@
     background:var(--brand-white); border-radius:var(--radius-md);
     padding:24px 18px; text-align:center; box-shadow:var(--shadow-soft);
   }
+  /* card colors follow the order from the reference flyer's 6 info-cards: pink, blue, lime, orange, purple, mint */
+  .card:nth-child(1){background:#f8cfe0;}
+  .card:nth-child(2){background:#c2e7f5;}
+  .card:nth-child(3){background:#dfec9c;}
+  .card:nth-child(4){background:#f8c491;}
   .card .icon{
     width:72px; height:72px; border-radius:50%; margin:0 auto 14px;
     object-fit:cover; border:3px solid var(--brand-bg-alt); box-shadow:var(--shadow-soft);
@@ -315,6 +320,45 @@
     box-shadow:0 -6px 20px rgba(0,0,0,.08);
   }
   @media (max-width:700px){ .sticky-cta{display:block;} body{padding-bottom:76px;} }
+
+  /* ---------- puppet peeks ---------- */
+  /* Each peek is absolutely positioned inside its host section (host section gets position:relative via JS).
+     Content layout is never affected — peeks are decorative, non-interactive, and clipped so they can never
+     cause horizontal scroll. Configure puppets in the "puppetPeeks" array near the end of the <script>. */
+  section{position:relative;}
+  .puppet-peek{
+    position:absolute;
+    top:0; width:140px;
+    pointer-events:none;
+    user-select:none;
+    z-index:2;
+    filter:drop-shadow(0 10px 18px rgba(51,36,48,.18));
+    animation:puppet-peek-bob 4.5s ease-in-out infinite;
+    animation-delay:var(--peek-delay, 0s);
+  }
+  .puppet-peek img{width:100%; height:auto; display:block;}
+  .puppet-peek[data-side="left"]{left:calc(-1 * var(--peek-bleed, 45px)); transform-origin:top left;}
+  .puppet-peek[data-side="right"]{right:calc(-1 * var(--peek-bleed, 45px)); transform-origin:top right;}
+  .puppet-peek[data-flip="true"]{transform:scaleX(-1);}
+
+  @keyframes puppet-peek-bob{
+    0%,100%{ transform:translateY(0) rotate(var(--peek-rot, 0deg)); }
+    50%{ transform:translateY(-8px) rotate(var(--peek-rot, 0deg)); }
+  }
+  .puppet-peek[data-flip="true"]{ animation-name:puppet-peek-bob-flip; }
+  @keyframes puppet-peek-bob-flip{
+    0%,100%{ transform:scaleX(-1) translateY(0) rotate(var(--peek-rot, 0deg)); }
+    50%{ transform:scaleX(-1) translateY(-8px) rotate(var(--peek-rot, 0deg)); }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .puppet-peek{animation:none;}
+  }
+
+  @media (max-width:700px){
+    .puppet-peek{width:calc(var(--peek-w, 140px) * .55);}
+    .puppet-peek[data-hide-mobile="true"]{display:none;}
+  }
 </style>
 </head>
 <body>
@@ -902,6 +946,52 @@
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', onResize);
     update();
+  })();
+
+  // ---------------------------------------------------------------
+  // PUPPET PEEKS — decorative puppets peeking in from the screen edges.
+  // To add / move / resize a puppet, add an entry to puppetPeeks below:
+  //   src          – path to a transparent PNG in images/
+  //   section      – CSS selector for the section the puppet peeks into
+  //   side         – 'left' or 'right'
+  //   top          – vertical offset inside that section, e.g. '10%' or '40px'
+  //   width        – width in px on desktop (auto-shrinks on mobile)
+  //   bleed        – px of the image hidden past the screen edge (default 45)
+  //   rotate       – tilt in degrees (optional, default 0)
+  //   flip         – true to mirror the image horizontally (optional)
+  //   delay        – animation delay in seconds, so puppets don't bob in sync (optional)
+  //   hideOnMobile – true to hide this puppet completely on small screens (optional)
+  // Leave the array empty / entries commented out to show nothing.
+  // ---------------------------------------------------------------
+  (function(){
+    var puppetPeeks = [
+      // Example — uncomment and point to a real transparent PNG to activate:
+      // { src:'images/puppet-peek-blue.png', section:'.hero', side:'left', top:'8%', width:150, rotate:-6 },
+      // { src:'images/puppet-peek-pink.png', section:'#buy', side:'right', top:'15%', width:130, rotate:8, flip:true, delay:1.2 },
+    ];
+
+    puppetPeeks.forEach(function(cfg){
+      var host = document.querySelector(cfg.section);
+      if(!host) return;
+      var width = cfg.width || 140;
+      var el = document.createElement('div');
+      el.className = 'puppet-peek';
+      el.setAttribute('data-side', cfg.side === 'right' ? 'right' : 'left');
+      if(cfg.flip) el.setAttribute('data-flip', 'true');
+      if(cfg.hideOnMobile) el.setAttribute('data-hide-mobile', 'true');
+      el.style.top = cfg.top || '0';
+      el.style.width = width + 'px';
+      el.style.setProperty('--peek-w', width + 'px');
+      el.style.setProperty('--peek-bleed', (cfg.bleed != null ? cfg.bleed : 45) + 'px');
+      el.style.setProperty('--peek-rot', (cfg.rotate || 0) + 'deg');
+      el.style.setProperty('--peek-delay', (cfg.delay || 0) + 's');
+      var img = document.createElement('img');
+      img.src = cfg.src;
+      img.alt = '';
+      img.setAttribute('aria-hidden', 'true');
+      el.appendChild(img);
+      host.appendChild(el);
+    });
   })();
 </script>
 
