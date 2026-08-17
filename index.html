@@ -254,7 +254,6 @@
   }
   .marquee-track{display:flex; gap:16px; width:max-content;}
   .marquee-track.photos{animation:marquee-scroll 60s linear infinite;}
-  .marquee-track.testis-track{animation:marquee-scroll 64s linear infinite;}
   .marquee:hover .marquee-track{animation-play-state:paused;}
   @keyframes marquee-scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
   @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none;} }
@@ -265,14 +264,28 @@
   }
   @media (max-width:600px){ .marquee-track.photos img{width:150px; height:190px;} }
 
-  /* ---------- testimonials ---------- */
-  .testi{
-    background:#fff; border-radius:var(--radius-md); padding:22px; box-shadow:var(--shadow-soft);
-    width:320px; flex-shrink:0;
+  /* ---------- testimonials: seamless infinite drag carousel ---------- */
+  .reviews-carousel{
+    position:relative; overflow:hidden; cursor:grab; padding:6px 0 10px;
+    -webkit-mask-image:linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+    mask-image:linear-gradient(to right, transparent, black 3%, black 97%, transparent);
   }
-  .testi .stars{color:#ffb400; letter-spacing:2px; margin-bottom:10px; font-size:16px;}
-  .testi p{font-size:16px; color:var(--brand-ink); margin-bottom:12px;}
-  .testi .who{font-size:15px; font-weight:700; color:var(--brand-muted);}
+  .reviews-carousel:active{cursor:grabbing;}
+  .reviews-track{display:flex; gap:20px; width:max-content; will-change:transform; padding:0 20px;}
+  .review-card{
+    width:270px; flex:0 0 auto; background:#fff; border-radius:20px;
+    border:1px solid #f1e2d5; box-shadow:var(--shadow-soft); padding:22px;
+    text-align:right; user-select:none;
+  }
+  @media (min-width:640px){ .review-card{width:310px; padding:26px;} }
+  .review-head{display:flex; flex-direction:row-reverse; align-items:center; gap:12px; margin-bottom:14px;}
+  .review-avatar{
+    width:46px; height:46px; border-radius:50%; flex-shrink:0; color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:16px;
+  }
+  .review-name{font-weight:800; font-size:15px; color:var(--brand-ink);}
+  .review-username{font-size:12px; color:var(--brand-muted);}
+  .review-text{font-size:14px; color:var(--brand-ink); line-height:1.7;}
 
   /* ---------- social impact ---------- */
   .impact{background:var(--brand-white);}
@@ -664,89 +677,8 @@
 <section style="background:var(--brand-bg-alt);">
   <div class="wrap" style="max-width:100%; padding:0;">
     <h2>ומה אומרים מי שכבר יצרו?</h2>
-    <div class="marquee">
-      <div class="marquee-track testis-track">
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>"תודה רבה על עוד בובה מהממת בדיוק כמו שביקשנו! פעילות כל כך כיפית שזו כבר הבובה השנייה שלנו."</p>
-          <div class="who">— אילנית ששונוב תורג'מן</div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>"הזמנתי כדי להעסיק את הבנות שלי – שירות אדיב, חומרים איכותיים וערכה קלה ונוחה לשימוש. הבנות נהנו וממש התלהבו!"</p>
-          <div class="who">— אתי ליאני</div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>"קיבלתי שירות VIP – סיון תמיד ענתה לכל שאלה בסבלנות ובחיוך. הפעילות עם הילדים הייתה מושלמת, והילדים היו בעננים!"</p>
-          <div class="who">— מעיין שניידמן חגבי</div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>"אין מילים לתאר את הדבר המופלא הזה שיוצא מדבר כל כך פשוט... חוויה מדהימה וכיפית לפעילות משפחתית."</p>
-          <div class="who">— ענבל בוחבוט</div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>"כל אחד מבטא את עצמו בדרך שלו, בביטחון שלו, בקצב שלו. וכמה כיף לשמוע אותם אומרים שהם לא רוצים שזה ייגמר לעולם."</p>
-          <div class="who">— אנה גדע לביא</div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>"הבובות שהזמנתי לגן הגיעו, ארוזות כל כך יפה. הילדים יהיו כל כך שמחים מחר... תודה!"</p>
-          <div class="who">— מאיה צח דהן</div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>"הכנתי עם שני ילדים מגמגמים, הם נהנו מאוד. הילד מדבר דרך הבובה ומרגיש הרבה יותר בנוח, הלחץ פוחת והוא מדבר בצורה שוטפת."</p>
-          <div class="who">— לקוחה</div>
-        </div>
-        <div class="testi">
-          <div class="stars">★★★★★</div>
-          <p>"הגיעו אלי שני ילדים סגורים... ובעזרת הבובות הצלחנו לשבור את הקרח. היה לנו ערב כיפי וכולם התלהבו מהמתנה המושלמת!"</p>
-          <div class="who">— לקוחה</div>
-        </div>
-        <div class="testi" aria-hidden="true">
-          <div class="stars">★★★★★</div>
-          <p>"תודה רבה על עוד בובה מהממת בדיוק כמו שביקשנו! פעילות כל כך כיפית שזו כבר הבובה השנייה שלנו."</p>
-          <div class="who">— אילנית ששונוב תורג'מן</div>
-        </div>
-        <div class="testi" aria-hidden="true">
-          <div class="stars">★★★★★</div>
-          <p>"הזמנתי כדי להעסיק את הבנות שלי – שירות אדיב, חומרים איכותיים וערכה קלה ונוחה לשימוש. הבנות נהנו וממש התלהבו!"</p>
-          <div class="who">— אתי ליאני</div>
-        </div>
-        <div class="testi" aria-hidden="true">
-          <div class="stars">★★★★★</div>
-          <p>"קיבלתי שירות VIP – סיון תמיד ענתה לכל שאלה בסבלנות ובחיוך. הפעילות עם הילדים הייתה מושלמת, והילדים היו בעננים!"</p>
-          <div class="who">— מעיין שניידמן חגבי</div>
-        </div>
-        <div class="testi" aria-hidden="true">
-          <div class="stars">★★★★★</div>
-          <p>"אין מילים לתאר את הדבר המופלא הזה שיוצא מדבר כל כך פשוט... חוויה מדהימה וכיפית לפעילות משפחתית."</p>
-          <div class="who">— ענבל בוחבוט</div>
-        </div>
-        <div class="testi" aria-hidden="true">
-          <div class="stars">★★★★★</div>
-          <p>"כל אחד מבטא את עצמו בדרך שלו, בביטחון שלו, בקצב שלו. וכמה כיף לשמוע אותם אומרים שהם לא רוצים שזה ייגמר לעולם."</p>
-          <div class="who">— אנה גדע לביא</div>
-        </div>
-        <div class="testi" aria-hidden="true">
-          <div class="stars">★★★★★</div>
-          <p>"הבובות שהזמנתי לגן הגיעו, ארוזות כל כך יפה. הילדים יהיו כל כך שמחים מחר... תודה!"</p>
-          <div class="who">— מאיה צח דהן</div>
-        </div>
-        <div class="testi" aria-hidden="true">
-          <div class="stars">★★★★★</div>
-          <p>"הכנתי עם שני ילדים מגמגמים, הם נהנו מאוד. הילד מדבר דרך הבובה ומרגיש הרבה יותר בנוח, הלחץ פוחת והוא מדבר בצורה שוטפת."</p>
-          <div class="who">— לקוחה</div>
-        </div>
-        <div class="testi" aria-hidden="true">
-          <div class="stars">★★★★★</div>
-          <p>"הגיעו אלי שני ילדים סגורים... ובעזרת הבובות הצלחנו לשבור את הקרח. היה לנו ערב כיפי וכולם התלהבו מהמתנה המושלמת!"</p>
-          <div class="who">— לקוחה</div>
-        </div>
-      </div>
+    <div class="reviews-carousel" id="reviewsCarousel">
+      <div class="reviews-track" id="reviewsTrack"></div>
     </div>
   </div>
 </section>
@@ -900,6 +832,138 @@
       });
     }, {threshold:0.2});
     cards.forEach(function(card){ observer.observe(card); });
+  })();
+
+  // קרוסלת ביקורות - לופ אינסופי אמיתי (seamless, ללא קפיצה, תומך בגרירה)
+  (function(){
+    // מערך הביקורות - קל להחליף בעתיד בביקורות אמיתיות
+    var reviews = [
+      { name: "לקוח/ה לדוגמה 1", username: "@customer1", text: "זהו טקסט ביקורת לדוגמה. יוחלף בביקורת אמיתית בהמשך." },
+      { name: "לקוח/ה לדוגמה 2", username: "@customer2", text: "עוד ביקורת לדוגמה, עם אורך טקסט קצת שונה כדי לבדוק את העיצוב." },
+      { name: "לקוח/ה לדוגמה 3", username: "@customer3", text: "ביקורת placeholder שלישית, מוכנה להחלפה בתוכן אמיתי בכל רגע." },
+      { name: "לקוח/ה לדוגמה 4", username: "@customer4", text: "וביקורת רביעית לדוגמה, כדי לוודא שהלופ האינסופי עובד חלק." }
+    ];
+
+    var carousel = document.getElementById('reviewsCarousel');
+    var track = document.getElementById('reviewsTrack');
+    if(!carousel || !track || !reviews.length) return;
+
+    var avatarColors = ['#a8398f', '#4fc3c8', '#e0a63c', '#7f2a6d', '#5aa39c'];
+
+    function escapeHTML(s){
+      return String(s).replace(/[&<>"']/g, function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+      });
+    }
+
+    function cardHTML(r, i){
+      var initial = escapeHTML((r.name || '?').trim().charAt(0));
+      var color = avatarColors[i % avatarColors.length];
+      return '<div class="review-card">' +
+        '<div class="review-head">' +
+          '<div class="review-avatar" style="background:' + color + '">' + initial + '</div>' +
+          '<div><div class="review-name">' + escapeHTML(r.name) + '</div>' +
+          '<div class="review-username">' + escapeHTML(r.username) + '</div></div>' +
+        '</div>' +
+        '<p class="review-text">' + escapeHTML(r.text) + '</p>' +
+      '</div>';
+    }
+
+    var setHTML = reviews.map(cardHTML).join('');
+    var setWidth = 0;
+
+    // בונה מספיק עותקים כדי שלעולם לא יהיה שטח ריק, בכל רוחב מסך ובכל כמות ביקורות
+    function buildTrack(){
+      track.innerHTML = setHTML;
+      var oneSet = track.scrollWidth; // רוחב סט אחד כולל המרווח שאחריו
+      if(oneSet <= 0){ return 0; }
+      var neededWidth = Math.max(carousel.clientWidth * 2, oneSet * 3);
+      var copies = Math.max(3, Math.ceil(neededWidth / oneSet));
+      var html = '';
+      for(var i = 0; i < copies; i++){ html += setHTML; }
+      track.innerHTML = html;
+      return oneSet;
+    }
+
+    setWidth = buildTrack();
+
+    var pos = 0;
+    var speed = 36; // px לשנייה
+    var lastTime = null;
+    var paused = false;
+    var dragging = false;
+    var dragStartX = 0;
+    var dragStartPos = 0;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function apply(){
+      track.style.transform = 'translateX(' + pos + 'px)';
+    }
+
+    function normalize(){
+      if(setWidth <= 0) return;
+      while(pos <= -setWidth){ pos += setWidth; dragStartPos += setWidth; }
+      while(pos > 0){ pos -= setWidth; dragStartPos -= setWidth; }
+    }
+
+    function step(ts){
+      if(lastTime == null){ lastTime = ts; }
+      var dt = (ts - lastTime) / 1000;
+      lastTime = ts;
+      if(!paused && !dragging && !reduceMotion && setWidth > 0){
+        pos -= speed * dt;
+        normalize();
+        apply();
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+
+    carousel.addEventListener('mouseenter', function(){ paused = true; });
+    carousel.addEventListener('mouseleave', function(){ paused = false; });
+
+    function pointerX(e){
+      if(e.touches && e.touches[0]) return e.touches[0].clientX;
+      if(e.changedTouches && e.changedTouches[0]) return e.changedTouches[0].clientX;
+      return e.clientX;
+    }
+    function onDown(e){
+      dragging = true;
+      paused = true;
+      dragStartX = pointerX(e);
+      dragStartPos = pos;
+    }
+    function onMove(e){
+      if(!dragging) return;
+      var dx = pointerX(e) - dragStartX;
+      pos = dragStartPos + dx;
+      normalize();
+      apply();
+    }
+    function onUp(){
+      if(!dragging) return;
+      dragging = false;
+      paused = false;
+    }
+    carousel.addEventListener('mousedown', function(e){ onDown(e); e.preventDefault(); });
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    carousel.addEventListener('touchstart', onDown, {passive:true});
+    carousel.addEventListener('touchmove', onMove, {passive:true});
+    carousel.addEventListener('touchend', onUp);
+
+    // בנייה מחדש בשינוי גודל חלון, תוך שמירה על המיקום היחסי (ללא קפיצה נראית)
+    var resizeTimer;
+    window.addEventListener('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function(){
+        var oldSetWidth = setWidth;
+        var fraction = oldSetWidth > 0 ? (((pos % oldSetWidth) + oldSetWidth) % oldSetWidth) / oldSetWidth : 0;
+        setWidth = buildTrack();
+        pos = -fraction * setWidth;
+        apply();
+      }, 200);
+    });
   })();
 
   // קרוסלת כרטיסים נגררת (stacked drag carousel)
