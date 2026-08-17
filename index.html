@@ -92,20 +92,16 @@
   }
   @media (max-width:860px){ .pricing-grid{max-width:100%; gap:10px;} }
   @media (max-width:700px){
-    .price-card{padding:14px 8px;}
+    .price-card,
+    .price-card.compact{padding:14px 8px;}
     .price-card .star-badge{font-size:9px; padding:4px 8px; gap:2px;}
     .price-card .star-badge svg{width:10px; height:10px;}
     .price-card .plan-name{font-size:13px;}
     .price-card .plan-amount{font-size:19px; margin:6px 0 2px;}
-    .price-card .plan-unit{font-size:10px; margin-bottom:6px;}
-    .price-card .plan-desc{display:none;}
-    .price-card .plan-features{gap:6px; margin-bottom:14px;}
-    .price-card .plan-features li{font-size:10.5px; gap:4px;}
-    .price-card .plan-features li svg{width:12px; height:12px;}
+    .price-card .plan-unit{font-size:10px; margin-bottom:0;}
+    .price-card .plan-desc,
+    .price-card .plan-features{display:none;}
     .price-card .card-cta{padding:9px 4px; font-size:11px;}
-    .price-card.compact .plan-unit,
-    .price-card.compact .plan-features{display:none;}
-    .price-card .mobile-hide-feature{display:none;}
   }
   .price-card{
     background:var(--brand-white); border-radius:var(--radius-lg);
@@ -725,7 +721,7 @@
       <div class="price-card popular">
         <span class="star-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          הבחירה המשפחתית
+          הכי פופולרי
         </span>
         <p class="plan-name">12 ערכות</p>
         <div class="plan-amount">660 ₪</div>
@@ -739,6 +735,10 @@
       </div>
 
       <div class="price-card">
+        <span class="star-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          הבחירה המשפחתית
+        </span>
         <p class="plan-name">6 ערכות</p>
         <div class="plan-amount">336 ₪</div>
         <p class="plan-unit">56 ₪ לערכה</p>
