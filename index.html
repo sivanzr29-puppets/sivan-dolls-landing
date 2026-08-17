@@ -220,10 +220,30 @@
     .zigzag-step{width:78%;}
   }
 
+  /* ---------- moving marquee strips (photos + testimonials) ---------- */
+  .marquee{
+    overflow:hidden; position:relative;
+    -webkit-mask-image:linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-image:linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+  .marquee-track{display:flex; gap:16px; width:max-content;}
+  .marquee-track.photos{animation:marquee-scroll 34s linear infinite;}
+  .marquee-track.testis-track{animation:marquee-scroll 40s linear infinite;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  @keyframes marquee-scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @media (prefers-reduced-motion: reduce){ .marquee-track{animation:none;} }
+
+  .marquee-track.photos img{
+    width:190px; height:230px; object-fit:cover; flex-shrink:0;
+    border-radius:var(--radius-md); box-shadow:var(--shadow-soft);
+  }
+  @media (max-width:600px){ .marquee-track.photos img{width:150px; height:190px;} }
+
   /* ---------- testimonials ---------- */
-  .testis{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-  @media (max-width:800px){ .testis{grid-template-columns:1fr;} }
-  .testi{background:#fff; border-radius:var(--radius-md); padding:22px; box-shadow:var(--shadow-soft);}
+  .testi{
+    background:#fff; border-radius:var(--radius-md); padding:22px; box-shadow:var(--shadow-soft);
+    width:320px; flex-shrink:0;
+  }
   .testi .stars{color:#ffb400; letter-spacing:2px; margin-bottom:10px; font-size:16px;}
   .testi p{font-size:16px; color:var(--brand-ink); margin-bottom:12px;}
   .testi .who{font-size:15px; font-weight:700; color:var(--brand-muted);}
@@ -313,7 +333,7 @@
       <h1>הרגע שבו <span>היצירה מתעוררת לחיים</span></h1>
       <p class="lead">פשוט פותחים את הערכה, יוצרים בובה ייחודית ומגלים שהיצירה היא רק ההתחלה. כשהדבק מתייבש, הקסם רק מתחיל.</p>
       <p class="lead" style="font-weight:700; color:var(--brand-ink);">כל החומרים בפנים | בלי הכנות | ללא ניסיון קודם</p>
-      <a href="#buy" class="cta-btn" style="max-width:280px; margin:0 auto;">לבחירת המארז שלי ↓</a>
+      <a href="#buy" class="cta-btn" style="max-width:280px; margin:0 auto;">לבחירת מארז ורכישה</a>
     </div>
     <img class="hero-img" style="border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); object-fit:cover; width:100%;" src="images/mom-daughter.jpg" alt="אמא וילדה משחקות עם בובת כף יד שיצרו">
   </div>
@@ -451,7 +471,7 @@
 <!-- ===================== 8. WHAT'S INSIDE ===================== -->
 <section>
   <div class="wrap">
-    <h2>הכול כבר בפנים</h2>
+    <h2>הכל כבר מוכן</h2>
     <p class="section-sub">חשבנו על הכול, כדי שלכם יישאר רק ליהנות מהיצירה.</p>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; max-width:900px; margin:0 auto;">
       <img src="images/boy-materials.jpg" alt="כל חומרי היצירה שבערכה" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); object-fit:cover;">
@@ -502,6 +522,17 @@
   </div>
 </section>
 
+<!-- ===================== 9b. MAKING-OF VIDEO ===================== -->
+<section>
+  <div class="wrap">
+    <h2>איך נראית היצירה בפועל</h2>
+    <video class="video-ph" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
+      <source src="images/demo2.mp4" type="video/mp4">
+      הדפדפן שלך לא תומך בהצגת וידאו מובנית. <a href="images/demo2.mp4">לחצו כאן לצפייה בסרטון</a>
+    </video>
+  </div>
+</section>
+
 <!-- ===================== 10. THE MOMENT ===================== -->
 <section class="story on-white">
   <div class="wrap">
@@ -523,35 +554,86 @@
   </div>
 </section>
 
+<!-- ===================== 11b. ROTATING PHOTO STRIP ===================== -->
+<section style="padding-top:0;">
+  <div class="marquee">
+    <div class="marquee-track photos" aria-hidden="false">
+      <img src="images/gallery-01.jpg" alt="אח ואחות עם הבובות שיצרו" loading="lazy">
+      <img src="images/gallery-04.jpg" alt="ילדה עם שתי בובות כף יד" loading="lazy">
+      <img src="images/gallery-08.jpg" alt="ילד עם בובה ירוקה בחצר" loading="lazy">
+      <img src="images/gallery-12.jpg" alt="תקריב על בובה צבעונית" loading="lazy">
+      <img src="images/gallery-15.jpg" alt="שורה של בובות שונות ומגוונות" loading="lazy">
+      <img src="images/gallery-03.jpg" alt="שני ילדים יוצרים ביחד" loading="lazy">
+      <img src="images/gallery-07.jpg" alt="ילד קטן משחק עם הבובה בחוץ" loading="lazy">
+      <img src="images/gallery-13.jpg" alt="ילדה עם בובת פלמינגו ורודה" loading="lazy">
+      <img src="images/gallery-01.jpg" alt="" loading="lazy">
+      <img src="images/gallery-04.jpg" alt="" loading="lazy">
+      <img src="images/gallery-08.jpg" alt="" loading="lazy">
+      <img src="images/gallery-12.jpg" alt="" loading="lazy">
+      <img src="images/gallery-15.jpg" alt="" loading="lazy">
+      <img src="images/gallery-03.jpg" alt="" loading="lazy">
+      <img src="images/gallery-07.jpg" alt="" loading="lazy">
+      <img src="images/gallery-13.jpg" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <!-- ===================== 12. TESTIMONIALS ===================== -->
 <section style="background:var(--brand-bg-alt);">
-  <div class="wrap">
+  <div class="wrap" style="max-width:100%; padding:0;">
     <h2>ומה אומרים מי שכבר יצרו?</h2>
-    <div class="testis">
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p>"תודה רבה על עוד בובה מהממת בדיוק כמו שביקשנו! פעילות כל כך כיפית שזו כבר הבובה השנייה שלנו."</p>
-        <div class="who">— אילנית ששונוב תורג'מן</div>
-      </div>
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p>"הזמנתי כדי להעסיק את הבנות שלי – שירות אדיב, חומרים איכותיים וערכה קלה ונוחה לשימוש. הבנות נהנו וממש התלהבו!"</p>
-        <div class="who">— אתי ליאני</div>
-      </div>
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p>"קיבלתי שירות VIP – סיון תמיד ענתה לכל שאלה בסבלנות ובחיוך. הפעילות עם הילדים הייתה מושלמת, והילדים היו בעננים!"</p>
-        <div class="who">— מעיין שניידמן חגבי</div>
-      </div>
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p>"אין מילים לתאר את הדבר המופלא הזה שיוצא מדבר כל כך פשוט... חוויה מדהימה וכיפית לפעילות משפחתית."</p>
-        <div class="who">— ענבל בוחבוט</div>
-      </div>
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p>"כל אחד מבטא את עצמו בדרך שלו, בביטחון שלו, בקצב שלו. וכמה כיף לשמוע אותם אומרים שהם לא רוצים שזה ייגמר לעולם."</p>
-        <div class="who">— אנה גדע לביא</div>
+    <div class="marquee">
+      <div class="marquee-track testis-track">
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>"תודה רבה על עוד בובה מהממת בדיוק כמו שביקשנו! פעילות כל כך כיפית שזו כבר הבובה השנייה שלנו."</p>
+          <div class="who">— אילנית ששונוב תורג'מן</div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>"הזמנתי כדי להעסיק את הבנות שלי – שירות אדיב, חומרים איכותיים וערכה קלה ונוחה לשימוש. הבנות נהנו וממש התלהבו!"</p>
+          <div class="who">— אתי ליאני</div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>"קיבלתי שירות VIP – סיון תמיד ענתה לכל שאלה בסבלנות ובחיוך. הפעילות עם הילדים הייתה מושלמת, והילדים היו בעננים!"</p>
+          <div class="who">— מעיין שניידמן חגבי</div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>"אין מילים לתאר את הדבר המופלא הזה שיוצא מדבר כל כך פשוט... חוויה מדהימה וכיפית לפעילות משפחתית."</p>
+          <div class="who">— ענבל בוחבוט</div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>"כל אחד מבטא את עצמו בדרך שלו, בביטחון שלו, בקצב שלו. וכמה כיף לשמוע אותם אומרים שהם לא רוצים שזה ייגמר לעולם."</p>
+          <div class="who">— אנה גדע לביא</div>
+        </div>
+        <div class="testi" aria-hidden="true">
+          <div class="stars">★★★★★</div>
+          <p>"תודה רבה על עוד בובה מהממת בדיוק כמו שביקשנו! פעילות כל כך כיפית שזו כבר הבובה השנייה שלנו."</p>
+          <div class="who">— אילנית ששונוב תורג'מן</div>
+        </div>
+        <div class="testi" aria-hidden="true">
+          <div class="stars">★★★★★</div>
+          <p>"הזמנתי כדי להעסיק את הבנות שלי – שירות אדיב, חומרים איכותיים וערכה קלה ונוחה לשימוש. הבנות נהנו וממש התלהבו!"</p>
+          <div class="who">— אתי ליאני</div>
+        </div>
+        <div class="testi" aria-hidden="true">
+          <div class="stars">★★★★★</div>
+          <p>"קיבלתי שירות VIP – סיון תמיד ענתה לכל שאלה בסבלנות ובחיוך. הפעילות עם הילדים הייתה מושלמת, והילדים היו בעננים!"</p>
+          <div class="who">— מעיין שניידמן חגבי</div>
+        </div>
+        <div class="testi" aria-hidden="true">
+          <div class="stars">★★★★★</div>
+          <p>"אין מילים לתאר את הדבר המופלא הזה שיוצא מדבר כל כך פשוט... חוויה מדהימה וכיפית לפעילות משפחתית."</p>
+          <div class="who">— ענבל בוחבוט</div>
+        </div>
+        <div class="testi" aria-hidden="true">
+          <div class="stars">★★★★★</div>
+          <p>"כל אחד מבטא את עצמו בדרך שלו, בביטחון שלו, בקצב שלו. וכמה כיף לשמוע אותם אומרים שהם לא רוצים שזה ייגמר לעולם."</p>
+          <div class="who">— אנה גדע לביא</div>
+        </div>
       </div>
     </div>
   </div>
@@ -580,6 +662,10 @@
   <div class="wrap">
     <h2>שאלות נפוצות</h2>
     <div class="faq">
+      <details>
+        <summary>האם כל ילד מקבל ערכה אישית?</summary>
+        <p>כן. כל ערכה מיועדת להכנת בובת כף יד אחת וכוללת את החומרים הדרושים ליצירה שלה.</p>
+      </details>
       <details>
         <summary>לאיזה גיל הערכה מתאימה?</summary>
         <p>מגיל 3 ועד 120. הערכה מתאימה לילדים ולמבוגרים שאוהבים ליצור. ילדים צעירים יכולים ליצור בליווי מבוגר, וילדים גדולים יותר יכולים לעבוד באופן עצמאי בהתאם ליכולת האישית שלהם.</p>
