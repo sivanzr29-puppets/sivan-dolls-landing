@@ -62,12 +62,7 @@
   }
 
   /* ---------- hero ---------- */
-  .hero{
-    padding:56px 0 40px;
-    background:radial-gradient(circle at 80% 0%, var(--brand-bg-alt), var(--brand-bg) 60%);
-  }
-  .hero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; text-align:center;}
-  @media (max-width:860px){ .hero .wrap{grid-template-columns:1fr;} }
+  .hero{padding:0 0 40px;}
   .eyebrow{
     display:inline-block; background:var(--brand-secondary); color:#7a5300;
     font-weight:700; font-size:13px; padding:6px 14px; border-radius:999px; margin-bottom:16px;
@@ -75,7 +70,35 @@
   .hero h1{font-size:clamp(28px,4.6vw,44px); margin-bottom:16px;}
   .hero h1 span{color:var(--brand-primary-dark);}
   .hero p.lead{font-size:20px; color:var(--brand-muted); margin-bottom:26px; max-width:540px; margin-inline:auto;}
-  .hero-img{aspect-ratio:4/3;}
+
+  /* hero banner: full-width photo with the headline overlaid on the left */
+  .hero-banner{position:relative; width:100%; overflow:hidden;}
+  .hero-banner-img{width:100%; height:auto; max-height:620px; object-fit:cover; display:block;}
+  .hero-banner-text{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:center;
+    width:58%; padding:0 5% 0 6%; text-align:right;
+    background:linear-gradient(to right, rgba(30,14,28,.62) 0%, rgba(30,14,28,.28) 65%, rgba(30,14,28,0) 100%);
+  }
+  .hero-banner-text h1{color:#fff; margin-bottom:0;}
+  .hero-banner-text h1 span{color:var(--brand-secondary);}
+  .hero-banner-text .lead{color:#fff; font-size:18px; max-width:420px; margin:0; text-shadow:0 2px 10px rgba(0,0,0,.35);}
+  .hero-arrow{display:flex; justify-content:flex-end; margin:8px 0 12px;}
+  .hero-arrow svg{animation:hero-arrow-bounce 1.6s ease-in-out infinite;}
+  @keyframes hero-arrow-bounce{0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);}}
+  @media (prefers-reduced-motion:reduce){ .hero-arrow svg{animation:none;} }
+  .hero-below{padding-top:26px; text-align:center;}
+  .hero-below .lead{margin-bottom:18px;}
+
+  @media (max-width:700px){
+    .hero-banner-img{max-height:480px;}
+    .hero-banner-text{
+      width:100%; padding:0 22px; text-align:center;
+      background:linear-gradient(to bottom, rgba(30,14,28,.12) 0%, rgba(30,14,28,.7) 55%, rgba(30,14,28,.8) 100%);
+    }
+    .hero-arrow{justify-content:center;}
+    .hero-banner-text .lead{max-width:none; margin-inline:auto;}
+  }
 
   /* ---------- pricing cards ---------- */
   .pricing-grid{
@@ -375,15 +398,20 @@
 
 <!-- ===================== 1. HERO ===================== -->
 <section class="hero">
-  <div class="wrap">
-    <div>
+  <div class="hero-banner">
+    <img class="hero-banner-img" src="images/mom-daughter.jpg" alt="אמא וילדה משחקות עם בובת כף יד שיצרו">
+    <div class="hero-banner-text">
       <span class="eyebrow">ערכת יצירה להכנת בובת כף יד</span>
       <h1>הרגע שבו <span>היצירה מתעוררת לחיים</span></h1>
+      <div class="hero-arrow" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d199e0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+      </div>
       <p class="lead">פשוט פותחים את הערכה, יוצרים בובה ייחודית ומגלים שהיצירה היא רק ההתחלה. כשהדבק מתייבש, הקסם רק מתחיל.</p>
-      <p class="lead" style="font-weight:700; color:var(--brand-ink);">כל החומרים בפנים | בלי הכנות | ללא ניסיון קודם</p>
-      <a href="#buy" class="cta-btn" style="max-width:280px; margin:0 auto;">לבחירת מארז ורכישה</a>
     </div>
-    <img class="hero-img" style="border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); object-fit:cover; width:100%;" src="images/mom-daughter.jpg" alt="אמא וילדה משחקות עם בובת כף יד שיצרו">
+  </div>
+  <div class="wrap hero-below">
+    <p class="lead" style="font-weight:700; color:var(--brand-ink); margin-inline:auto;">כל החומרים בפנים | בלי הכנות | ללא ניסיון קודם</p>
+    <a href="#buy" class="cta-btn" style="max-width:280px; margin:0 auto;">לבחירת מארז ורכישה</a>
   </div>
 </section>
 
