@@ -90,7 +90,20 @@
     display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
     max-width:1000px; margin:0 auto 28px; align-items:stretch;
   }
-  @media (max-width:860px){ .pricing-grid{grid-template-columns:1fr; max-width:420px;} }
+  @media (max-width:860px){ .pricing-grid{max-width:100%; gap:10px;} }
+  @media (max-width:700px){
+    .price-card{padding:14px 8px;}
+    .price-card .star-badge{font-size:9px; padding:4px 8px; gap:2px;}
+    .price-card .star-badge svg{width:10px; height:10px;}
+    .price-card .plan-name{font-size:13px;}
+    .price-card .plan-amount{font-size:19px; margin:6px 0 2px;}
+    .price-card .plan-unit{font-size:10px; margin-bottom:6px;}
+    .price-card .plan-desc{font-size:10.5px; margin-bottom:10px; min-height:0;}
+    .price-card .plan-features{gap:6px; margin-bottom:14px;}
+    .price-card .plan-features li{font-size:10.5px; gap:4px;}
+    .price-card .plan-features li svg{width:12px; height:12px;}
+    .price-card .card-cta{padding:9px 4px; font-size:11px;}
+  }
   .price-card{
     background:var(--brand-white); border-radius:var(--radius-lg);
     border:1px solid #ffe1c9; box-shadow:var(--shadow-soft);
@@ -251,7 +264,7 @@
     width:190px; height:230px; border-radius:var(--radius-md);
     overflow:hidden; box-shadow:var(--shadow-soft);
   }
-  @media (max-width:600px){ .scroll-strip.photos-strip .scroll-item{width:150px; height:190px;} }
+  @media (max-width:600px){ .scroll-strip.photos-strip .scroll-item{width:230px; height:280px;} }
   .scroll-strip.photos-strip .scroll-item img{width:100%; height:100%; object-fit:cover; display:block;}
 
   /* ---------- testimonials: same seamless scroll-strip technique ---------- */
@@ -412,6 +425,7 @@
   .c4{background:#f3963c;}
   .c5{background:#0e6f9e;}
   .c6{background:#4fbf8b;}
+  .c7{background:#4fd1c5;}
 
   .pulse-pink{
     color:#ea6ea3;
@@ -463,7 +477,7 @@
 <!-- ===================== 1. HERO ===================== -->
 <section class="hero">
   <div class="wrap hero-top">
-    <video class="hero-banner-img" autoplay muted loop playsinline aria-label="סרטון באנר - בובת כף יד">
+    <video class="hero-banner-img" autoplay muted loop playsinline poster="images/hero-banner-poster.jpg" aria-label="סרטון באנר - בובת כף יד">
       <source src="images/hero-banner.mp4" type="video/mp4">
     </video>
     <div class="hero-heading">
@@ -495,7 +509,7 @@
 <section>
   <div class="wrap">
     <h2>מערכה אחת קטנה לבובה<br class="headline-break"><span class="headline-accent"> עם חיים משלה</span></h2>
-    <video class="video-ph" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
+    <video class="video-ph" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata" poster="images/demo-poster.jpg">
       <source src="images/demo.mp4" type="video/mp4">
       הדפדפן שלך לא תומך בהצגת וידאו מובנית. <a href="images/demo.mp4">לחצו כאן לצפייה בסרטון</a>
     </video>
@@ -503,7 +517,7 @@
 </section>
 
 <!-- ===================== 7. STORY / REINFORCEMENT ===================== -->
-<section class="story color-block c3">
+<section class="story color-block c2">
   <div class="wrap">
     <h2>הנשק הסודי שלך נגד ה"משעמם לי"</h2>
     <p>יש ימים שכל מה שצריך הוא לפתוח ערכה אחת קטנה.</p>
@@ -640,7 +654,7 @@
 <section>
   <div class="wrap">
     <h2>איך נראית היצירה בפועל</h2>
-    <video class="video-ph" style="width:100%; max-width:380px; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
+    <video class="video-ph" style="width:100%; max-width:380px; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata" poster="images/demo2-poster.jpg">
       <source src="images/demo2.mp4" type="video/mp4">
       הדפדפן שלך לא תומך בהצגת וידאו מובנית. <a href="images/demo2.mp4">לחצו כאן לצפייה בסרטון</a>
     </video>
@@ -671,7 +685,7 @@
 </section>
 
 <!-- ===================== 11. SAME KIT, ENDLESS POSSIBILITIES ===================== -->
-<section class="story color-block c3">
+<section class="story color-block c7">
   <div class="wrap">
     <h2>אותה ערכה. אינסוף אפשרויות.</h2>
     <p>צבעים, שיער, עיניים, פרטים והמון מקום לדמיון.</p>
@@ -719,7 +733,7 @@
 <section class="impact color-block c4">
   <div class="wrap">
     <div class="impact-box">
-      <video style="width:100%; height:auto; display:block; border-radius:var(--radius-md); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
+      <video style="width:100%; height:auto; display:block; border-radius:var(--radius-md); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata" poster="images/impact-poster.jpg">
         <source src="images/impact.mp4" type="video/mp4">
         הדפדפן שלך לא תומך בהצגת וידאו מובנית.
       </video>
