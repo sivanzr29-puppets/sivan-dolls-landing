@@ -99,25 +99,53 @@
     max-width:520px; margin:0 auto;
     border:1px solid #ffe1c9;
   }
-  .packages{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px;}
-  @media (max-width:420px){ .packages{grid-template-columns:repeat(2,1fr);} }
-  .pkg{
-    border:2px solid #f1e2d5; border-radius:var(--radius-md);
-    padding:14px 8px; text-align:center; cursor:pointer;
-    transition:.15s; background:#fffdfb; position:relative;
+
+  /* pricing cards */
+  .pricing-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+    max-width:1000px; margin:0 auto 36px; align-items:start;
   }
-  .pkg:hover{border-color:var(--brand-secondary);}
-  .pkg.selected{border-color:var(--brand-primary); background:#fdf0fa; box-shadow:0 0 0 3px rgba(168,57,143,.15);}
-  .pkg .qty{font-weight:800; font-size:16px;}
-  .pkg .label{font-size:12px; color:var(--brand-muted); margin:2px 0 6px;}
-  .pkg .price{font-weight:800; font-size:18px; color:var(--brand-primary-dark);}
-  .pkg .price small{font-weight:500; font-size:11px; color:var(--brand-muted);}
-  .pkg .badge{
-    position:absolute; top:-10px; right:50%; transform:translateX(50%);
-    background:var(--brand-accent); color:#fff; font-size:10px; font-weight:700;
-    padding:2px 8px; border-radius:999px; white-space:nowrap;
+  @media (max-width:860px){ .pricing-grid{grid-template-columns:1fr; max-width:420px;} }
+  .price-card{
+    background:var(--brand-white); border-radius:var(--radius-lg);
+    border:1px solid #ffe1c9; box-shadow:var(--shadow-soft);
+    padding:32px 24px; text-align:center; position:relative; overflow:hidden;
+    opacity:0; transform:translateY(24px);
+    transition:opacity .6s ease, transform .6s ease;
   }
-  .pkg .badge.popular{background:var(--brand-secondary); color:#7a5300;}
+  .price-card.in-view{opacity:1; transform:translateY(0);}
+  .price-card.popular{
+    border:2px solid var(--brand-primary); box-shadow:var(--shadow-strong); z-index:1;
+  }
+  .price-card.popular.in-view{transform:translateY(0) scale(1.05);}
+  @media (max-width:860px){ .price-card.popular.in-view{transform:translateY(0) scale(1);} }
+  .price-card .star-badge{
+    position:absolute; top:0; left:0; display:flex; align-items:center; gap:4px;
+    background:var(--brand-primary); color:#fff; font-size:12px; font-weight:700;
+    padding:7px 16px 7px 14px; border-radius:0 var(--radius-lg) 0 var(--radius-md);
+  }
+  .price-card .plan-name{font-size:14px; font-weight:700; color:var(--brand-muted); letter-spacing:.3px;}
+  .price-card .plan-amount{font-size:42px; font-weight:800; color:var(--brand-ink); margin:14px 0 2px; font-variant-numeric:tabular-nums;}
+  .price-card .plan-unit{font-size:13px; color:var(--brand-muted); margin-bottom:22px;}
+  .price-card .plan-features{list-style:none; text-align:right; margin-bottom:26px; display:flex; flex-direction:column; gap:11px;}
+  .price-card .plan-features li{display:flex; align-items:flex-start; gap:8px; font-size:15px;}
+  .price-card .plan-features li svg{flex-shrink:0; margin-top:3px; color:var(--brand-primary);}
+  .price-card .card-cta{
+    display:block; width:100%; text-align:center; text-decoration:none;
+    padding:13px; border-radius:999px; font-weight:800; font-size:15px;
+    border:2px solid var(--brand-primary); color:var(--brand-primary-dark); background:transparent;
+    transition:.2s;
+  }
+  .price-card .card-cta:hover{background:var(--brand-bg-alt);}
+  .price-card.popular .card-cta{
+    background:linear-gradient(135deg, var(--brand-primary), var(--brand-primary-dark));
+    color:#fff; border-color:transparent; box-shadow:var(--shadow-strong);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .price-card{opacity:1; transform:none; transition:none;}
+    .price-card.popular.in-view{transform:none;}
+  }
+
   .shipping{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;}
   .ship-opt{
     border:2px solid #f1e2d5; border-radius:var(--radius-sm); background:#fffdfb;
@@ -526,25 +554,51 @@
   <div class="wrap">
     <h2>מוכנים ליצור?</h2>
     <p class="section-sub">בחרו כמה בובות תרצו ליצור</p>
-    <div class="buybox">
-      <div class="packages">
-        <div class="pkg" data-qty="3">
-          <div class="qty">3 בובות</div>
-          <div class="label">לזמן יצירה</div>
-          <div class="price">171₪ <br><small>57₪ ליחידה</small></div>
-        </div>
-        <div class="pkg" data-qty="6">
-          <div class="qty">6 בובות</div>
-          <div class="label">למשפחה ולחברים</div>
-          <div class="price">336₪ <br><small>56₪ ליחידה</small></div>
-        </div>
-        <div class="pkg selected" data-qty="12">
-          <span class="badge popular">הכי פופולרי</span>
-          <div class="qty">12 בובות</div>
-          <div class="label">לחגיגה קטנה</div>
-          <div class="price">660₪ <br><small>55₪ ליחידה + מתנה</small></div>
-        </div>
+
+    <div class="pricing-grid" id="pricingGrid">
+      <div class="price-card">
+        <p class="plan-name">3 בובות</p>
+        <div class="plan-amount">171₪</div>
+        <p class="plan-unit">57₪ ליחידה · לזמן יצירה</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה כלולים</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> הוראות הכנה מצולמות שלב-אחר-שלב</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מושלם לניסיון ראשון</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">מוסיפים לסל</a>
       </div>
+
+      <div class="price-card">
+        <p class="plan-name">6 בובות</p>
+        <div class="plan-amount">336₪</div>
+        <p class="plan-unit">56₪ ליחידה · למשפחה ולחברים</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל היתרונות של חבילת 3</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> חיסכון בעלות ליחידה</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מספיק לכל הילדים בבית</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">מוסיפים לסל</a>
+      </div>
+
+      <div class="price-card popular">
+        <span class="star-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          הכי פופולרי
+        </span>
+        <p class="plan-name">12 בובות</p>
+        <div class="plan-amount">660₪</div>
+        <p class="plan-unit">55₪ ליחידה + מתנה · לחגיגה קטנה</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל היתרונות הקודמים</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> המחיר הכי משתלם ליחידה</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מתנה מיוחדת על ההזמנה</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> אידיאלי לגן, לכיתה או למסיבה</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">מוסיפים לסל</a>
+      </div>
+    </div>
+
+    <div class="buybox">
       <div class="shipping">
         <div class="ship-opt selected" data-ship="delivery">
           <div class="ship-label">🚚 משלוח עד הבית</div>
@@ -555,8 +609,7 @@
           <div class="ship-price">חינם</div>
         </div>
       </div>
-      <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" id="buyNowBtn" class="cta-btn" target="_blank" rel="noopener">מוסיפים לסל ומתחילים ליצור 🧵</a>
-      <p class="cta-sub">תשלום מאובטח • משלוח לכל הארץ • בלחיצה על "מוסיפים לסל" מאשרים את <a href="terms.html" style="color:var(--brand-primary-dark); text-decoration:underline;">תקנון ותנאי הרכישה</a></p>
+      <p class="cta-sub">תשלום מאובטח • משלוח לכל הארץ • ברכישה מאשרים את <a href="terms.html" style="color:var(--brand-primary-dark); text-decoration:underline;">תקנון ותנאי הרכישה</a></p>
     </div>
   </div>
 </section>
@@ -588,13 +641,26 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // בחירת חבילה
-  document.querySelectorAll('.pkg').forEach(function(el){
-    el.addEventListener('click', function(){
-      document.querySelectorAll('.pkg').forEach(function(p){ p.classList.remove('selected'); });
-      el.classList.add('selected');
-    });
-  });
+  // אנימציית כניסה לכרטיסי המחיר בזמן גלילה
+  (function(){
+    var cards = document.querySelectorAll('#pricingGrid .price-card');
+    if(!cards.length) return;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion){
+      cards.forEach(function(c){ c.classList.add('in-view'); });
+      return;
+    }
+    cards.forEach(function(card, i){ card.style.transitionDelay = (i * 0.12) + 's'; });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.2});
+    cards.forEach(function(card){ observer.observe(card); });
+  })();
 
   // בחירת אופן משלוח
   document.querySelectorAll('.ship-opt').forEach(function(el){
