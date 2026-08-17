@@ -407,6 +407,16 @@
   .c4{background:#f3963c;}
   .c5{background:#0e6f9e;}
   .c6{background:#4fbf8b;}
+
+  .pulse-pink{
+    color:#ea6ea3;
+    animation:pulse-grow 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse-grow{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+  }
+  @media (prefers-reduced-motion:reduce){ .pulse-pink{animation:none;} }
 </style>
 </head>
 <body>
@@ -478,7 +488,7 @@
 <!-- ===================== 8. WHAT'S INSIDE ===================== -->
 <section>
   <div class="wrap">
-    <h2>הכל כבר מוכן</h2>
+    <h2 class="pulse-pink">הכל כבר מוכן</h2>
     <p class="section-sub">חשבנו על הכול, כדי שלכם יישאר רק ליהנות מהיצירה.</p>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; max-width:900px; margin:0 auto;">
       <img src="images/boy-materials.jpg" alt="כל חומרי היצירה שבערכה" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); object-fit:cover;">
