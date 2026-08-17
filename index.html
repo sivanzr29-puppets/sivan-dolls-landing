@@ -220,6 +220,32 @@
     .zigzag-step{width:78%;}
   }
 
+  /* ---------- stacked drag carousel ---------- */
+  .stack-carousel{
+    position:relative; width:100%; max-width:900px; height:290px; margin:40px auto 0;
+    display:flex; align-items:center; justify-content:center; touch-action:pan-y; user-select:none;
+  }
+  @media (min-width:640px){ .stack-carousel{height:340px;} }
+  .stack-drag{position:absolute; inset:0; z-index:50; cursor:grab;}
+  .stack-drag:active{cursor:grabbing;}
+  .stack-card{
+    position:absolute; width:170px; height:230px; border-radius:20px; overflow:hidden;
+    box-shadow:var(--shadow-strong); background:#000;
+    transition:transform .5s cubic-bezier(.22,1,.36,1), opacity .5s ease;
+    will-change:transform;
+  }
+  @media (min-width:640px){ .stack-card{width:210px; height:290px;} }
+  .stack-card img{width:100%; height:100%; object-fit:cover; display:block; pointer-events:none;}
+  .stack-card::after{content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.1) 55%, transparent);}
+  .stack-badge{
+    position:absolute; top:12px; left:12px; background:rgba(255,255,255,.95); color:var(--brand-primary-dark);
+    font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; z-index:2;
+  }
+  .stack-caption{position:absolute; bottom:14px; right:14px; left:14px; color:#fff; z-index:2; text-align:right;}
+  .stack-caption .stack-title{font-weight:800; font-size:15px; margin-bottom:2px;}
+  .stack-caption .stack-desc{font-size:12px; opacity:.85;}
+  @media (prefers-reduced-motion: reduce){ .stack-card{transition:none;} }
+
   /* ---------- moving marquee strips (photos + testimonials) ---------- */
   .marquee{
     overflow:hidden; position:relative;
@@ -551,6 +577,50 @@
     <p>צבעים, שיער, עיניים, פרטים והמון מקום לדמיון.</p>
     <p>כל ילד מתחיל עם ערכה – ומסיים עם בובה שהיא לגמרי שלו.</p>
     <p class="italic">אין שתי בובות שנראות אותו הדבר, וזה בדיוק הקסם — כמונו בני האדם, כל אחד הוא יחיד ומיוחד.</p>
+
+    <div class="stack-carousel" id="stackCarousel">
+      <div class="stack-drag" id="stackDrag" aria-hidden="true"></div>
+      <div class="stack-card">
+        <img src="images/strip-11.jpg" alt="ילדה עם שתי בובות כף יד">
+        <span class="stack-badge">חברות</span>
+        <div class="stack-caption">
+          <p class="stack-title">רגעים של חיוך</p>
+          <p class="stack-desc">כל בובה מביאה איתה סיפור חדש.</p>
+        </div>
+      </div>
+      <div class="stack-card">
+        <img src="images/strip-02.jpg" alt="משפחה שלמה יוצרת יחד סביב השולחן">
+        <span class="stack-badge">משפחה</span>
+        <div class="stack-caption">
+          <p class="stack-title">זמן איכות אמיתי</p>
+          <p class="stack-desc">כולם סביב השולחן, יוצרים יחד.</p>
+        </div>
+      </div>
+      <div class="stack-card">
+        <img src="images/strip-05.jpg" alt="ילד עם הבובה שיצר">
+        <span class="stack-badge">יצירה</span>
+        <div class="stack-caption">
+          <p class="stack-title">גאווה של יצירה</p>
+          <p class="stack-desc">הרגע שהבובה מקבלת חיים.</p>
+        </div>
+      </div>
+      <div class="stack-card">
+        <img src="images/strip-01.jpg" alt="קבוצת ילדות עם הבובות שיצרו">
+        <span class="stack-badge">חברים</span>
+        <div class="stack-caption">
+          <p class="stack-title">קבוצה שלמה יוצרת</p>
+          <p class="stack-desc">מסיבה שהופכת ליצירה משותפת.</p>
+        </div>
+      </div>
+      <div class="stack-card">
+        <img src="images/strip-09.jpg" alt="ילד משחק עם עיניים גדולות מהערכה">
+        <span class="stack-badge">כיף</span>
+        <div class="stack-caption">
+          <p class="stack-title">פשוט נהנים</p>
+          <p class="stack-desc">אין גיל מתאים מדי לדמיון.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -826,6 +896,70 @@
       });
     }, {threshold:0.2});
     cards.forEach(function(card){ observer.observe(card); });
+  })();
+
+  // קרוסלת כרטיסים נגררת (stacked drag carousel)
+  (function(){
+    var container = document.getElementById('stackCarousel');
+    var dragEl = document.getElementById('stackDrag');
+    var cards = container ? Array.prototype.slice.call(container.querySelectorAll('.stack-card')) : [];
+    if(!container || !dragEl || !cards.length) return;
+
+    var total = cards.length;
+    var progress = 0;
+    var dragging = false;
+    var startX = 0;
+    var startProgress = 0;
+
+    function render(){
+      cards.forEach(function(card, i){
+        var diff = (i - progress) % total;
+        if(diff > total / 2) diff -= total;
+        if(diff < -total / 2) diff += total;
+        var absDiff = Math.abs(diff);
+        var x = diff * 46;
+        var rotate = absDiff < 0.05 ? 0 : diff * 8;
+        var y = absDiff < 0.05 ? 0 : absDiff * 16;
+        var scale = 1 - absDiff * 0.14;
+        var edge = total / 2;
+        var opacity = absDiff > edge - 0.5 ? Math.max(0, 1 - (absDiff - (edge - 0.5)) * 2) : 1;
+        card.style.transform = 'translateX(' + x + '%) translateY(' + y + 'px) rotate(' + rotate + 'deg) scale(' + scale + ')';
+        card.style.opacity = opacity;
+        card.style.zIndex = Math.round(100 - absDiff * 10);
+      });
+    }
+
+    function pointerX(e){
+      return (e.touches && e.touches[0] ? e.touches[0].clientX : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : e.clientX));
+    }
+
+    function onDown(e){
+      dragging = true;
+      startX = pointerX(e);
+      startProgress = progress;
+    }
+    function onMove(e){
+      if(!dragging) return;
+      var delta = (startX - pointerX(e)) / 100;
+      progress = startProgress + delta;
+      render();
+    }
+    function onUp(e){
+      if(!dragging) return;
+      dragging = false;
+      var delta = (startX - pointerX(e)) / 100;
+      progress = Math.round(startProgress + delta);
+      render();
+    }
+
+    dragEl.addEventListener('mousedown', function(e){ onDown(e); e.preventDefault(); });
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    dragEl.addEventListener('touchstart', onDown, {passive:true});
+    dragEl.addEventListener('touchmove', onMove, {passive:true});
+    dragEl.addEventListener('touchend', onUp);
+
+    render();
   })();
 
   // בחירת אופן משלוח
