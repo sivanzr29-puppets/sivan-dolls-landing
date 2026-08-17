@@ -91,17 +91,6 @@
     max-width:1000px; margin:0 auto 28px; align-items:stretch;
   }
   @media (max-width:860px){ .pricing-grid{max-width:100%; gap:10px;} }
-  @media (max-width:700px){
-    .price-card,
-    .price-card.compact{padding:14px 8px;}
-    .price-card .star-badge{display:none;}
-    .price-card .plan-name{font-size:13px;}
-    .price-card .plan-amount{font-size:19px; margin:6px 0 2px;}
-    .price-card .plan-unit{font-size:10px; margin-bottom:0;}
-    .price-card .plan-desc,
-    .price-card .plan-features{display:none;}
-    .price-card .card-cta{padding:9px 4px; font-size:11px;}
-  }
   .price-card{
     background:var(--brand-white); border-radius:var(--radius-lg);
     border:1px solid #ffe1c9; box-shadow:var(--shadow-soft);
@@ -146,6 +135,17 @@
     .price-card{opacity:1; transform:none; transition:none;}
     .price-card.popular.in-view{transform:none;}
     .price-card.compact.in-view{transform:none;}
+  }
+  @media (max-width:700px){
+    .price-card,
+    .price-card.compact{padding:14px 8px;}
+    .price-card .star-badge{display:none;}
+    .price-card .plan-name{font-size:13px;}
+    .price-card .plan-amount{font-size:19px; margin:6px 0 2px;}
+    .price-card .plan-unit{font-size:10px; margin-bottom:0;}
+    .price-card .plan-desc,
+    .price-card .plan-features{display:none;}
+    .price-card .card-cta{padding:9px 4px; font-size:11px;}
   }
 
   /* shipping / payment info strip */
