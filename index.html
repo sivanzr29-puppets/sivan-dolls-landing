@@ -368,6 +368,45 @@
     .puppet-peek{width:calc(var(--peek-w, 140px) * .55);}
     .puppet-peek[data-hide-mobile="true"]{display:none;}
   }
+
+  /* ---------- site-wide color blocks ---------- */
+  /* the whole site follows the reference: colored rounded "blob" panels on a plain white page,
+     cycling through the same 6 colors used in the feature-highlights section */
+  body{background:#fff;}
+  .color-block{
+    max-width:1100px; margin:28px auto; padding:56px 40px;
+    border-radius:60px; color:#fff;
+  }
+  @media (max-width:700px){ .color-block{margin:16px 14px; padding:36px 22px; border-radius:32px;} }
+  .color-block h2{color:#fff;}
+  .color-block .section-sub{color:rgba(255,255,255,.88);}
+  .color-block p{color:#fff;}
+  .color-block p.italic{color:#fff; opacity:.95;}
+  .color-block .step p{color:rgba(255,255,255,.9);}
+  .color-block .inside-note{color:#fff;}
+  .color-block .trust{border:0;}
+  .color-block .trust-item{color:#fff;}
+  .color-block .trust-item .dot{background:#fff;}
+
+  /* nested white/light cards stay legible no matter which colored block they sit inside */
+  .color-block .price-card,
+  .color-block .review-card,
+  .color-block .faq details,
+  .color-block .mini-card,
+  .color-block .ship-opt,
+  .color-block .impact-box,
+  .color-block .contact-btn{
+    color:var(--brand-ink);
+  }
+  .color-block .impact-box h2,
+  .color-block .impact-box p{color:var(--brand-ink);}
+
+  .c1{background:#8bbb45;}
+  .c2{background:#55c1e4;}
+  .c3{background:#ea6ea3;}
+  .c4{background:#f3963c;}
+  .c5{background:#0e6f9e;}
+  .c6{background:#4fbf8b;}
 </style>
 </head>
 <body>
@@ -402,7 +441,7 @@
 </section>
 
 <!-- ===================== 2. TRUST ICONS ===================== -->
-<div class="wrap">
+<div class="color-block c1">
   <div class="trust">
     <div class="trust-item"><span class="dot"></span> למעלה מעשור של ניסיון</div>
     <div class="trust-item"><span class="dot"></span> מיוצר בישראל</div>
@@ -412,7 +451,7 @@
 </div>
 
 <!-- ===================== 6. DEMO VIDEO ===================== -->
-<section style="background:var(--brand-bg-alt);">
+<section class="color-block c2">
   <div class="wrap">
     <h2>מערכה אחת קטנה לבובה עם חיים משלה</h2>
     <video class="video-ph" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
@@ -423,7 +462,7 @@
 </section>
 
 <!-- ===================== 7. STORY / REINFORCEMENT ===================== -->
-<section class="story">
+<section class="story color-block c3">
   <div class="wrap">
     <h2>הנשק הסודי שלך נגד ה"משעמם לי"</h2>
     <p>יש ימים שכל מה שצריך הוא לפתוח ערכה אחת קטנה.</p>
@@ -437,7 +476,7 @@
 </section>
 
 <!-- ===================== 8. WHAT'S INSIDE ===================== -->
-<section>
+<section class="color-block c4">
   <div class="wrap">
     <h2>הכל כבר מוכן</h2>
     <p class="section-sub">חשבנו על הכול, כדי שלכם יישאר רק ליהנות מהיצירה.</p>
@@ -455,7 +494,7 @@
 </section>
 
 <!-- ===================== 3+4. PRICING + SHIPPING ===================== -->
-<section id="buy" style="background:var(--brand-bg-alt); padding-top:44px;">
+<section id="buy" class="color-block c5">
   <div class="wrap">
     <h2>כמה בובות תרצו ליצור?</h2>
     <p class="section-sub">בחרו את המארז שמתאים לכם – כל ערכה מכילה את כל החומרים הדרושים להכנת בובת כף יד אחת.</p>
@@ -521,7 +560,7 @@
 </section>
 
 <!-- ===================== 9. HOW IT WORKS ===================== -->
-<section style="background:var(--brand-bg-alt);">
+<section class="color-block c6">
   <div class="wrap">
     <h2>איך זה עובד?</h2>
     <p class="section-sub">ככה עושים קסמים בשלושה צעדים פשוטים</p>
@@ -557,7 +596,7 @@
 </section>
 
 <!-- ===================== 9b. MAKING-OF VIDEO ===================== -->
-<section>
+<section class="color-block c1">
   <div class="wrap">
     <h2>איך נראית היצירה בפועל</h2>
     <video class="video-ph" style="width:100%; max-width:380px; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
@@ -568,7 +607,7 @@
 </section>
 
 <!-- ===================== 10. THE MOMENT ===================== -->
-<section class="story on-white">
+<section class="story color-block c2">
   <div class="wrap">
     <p>יש רגע אחד שאי אפשר להסביר.</p>
     <p>הרגע שבו היד נכנסת בפעם הראשונה אל תוך הבובה.</p>
@@ -591,7 +630,7 @@
 </section>
 
 <!-- ===================== 11. SAME KIT, ENDLESS POSSIBILITIES ===================== -->
-<section class="story">
+<section class="story color-block c3">
   <div class="wrap">
     <h2>אותה ערכה. אינסוף אפשרויות.</h2>
     <p>צבעים, שיער, עיניים, פרטים והמון מקום לדמיון.</p>
@@ -636,7 +675,7 @@
 </section>
 
 <!-- ===================== 13. SOCIAL IMPACT ===================== -->
-<section class="impact">
+<section class="impact color-block c4">
   <div class="wrap">
     <div class="impact-box">
       <video style="width:100%; height:auto; display:block; border-radius:var(--radius-md); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
@@ -654,7 +693,7 @@
 </section>
 
 <!-- ===================== 14. FAQ ===================== -->
-<section style="background:var(--brand-bg-alt);">
+<section class="color-block c5">
   <div class="wrap">
     <h2>שאלות נפוצות</h2>
     <div class="faq">
@@ -714,7 +753,7 @@
 </section>
 
 <!-- ===================== 15. PRICING RECAP ===================== -->
-<section id="buy2">
+<section id="buy2" class="color-block c6">
   <div class="wrap">
     <h2>מוכנים להעיר את הדמיון לחיים?</h2>
     <p class="section-sub">בחרו כמה בובות תרצו ליצור – וכל מה שצריך כבר מחכה בפנים.</p>
@@ -737,7 +776,7 @@
 </section>
 
 <!-- ===================== 16. WHATSAPP ===================== -->
-<section class="contact">
+<section class="contact color-block c1">
   <div class="wrap" style="text-align:center;">
     <h2>נשארה שאלה לפני ההזמנה?</h2>
     <p class="section-sub" style="margin-bottom:20px;">כתבו לנו בוואטסאפ ונשמח לעזור.</p>
