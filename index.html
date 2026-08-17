@@ -77,6 +77,7 @@
   .hero-heading{text-align:right;}
   @media (max-width:860px){ .hero-heading{text-align:center;} }
   .hero-banner-img{width:100%; height:auto; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); display:block;}
+  video.hero-banner-img{aspect-ratio:4/5; object-fit:cover;}
   .hero-arrow{display:flex; justify-content:center; margin:22px 0;}
   .hero-arrow svg{animation:hero-arrow-bounce 1.6s ease-in-out infinite;}
   @keyframes hero-arrow-bounce{0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);}}
@@ -438,7 +439,9 @@
 <!-- ===================== 1. HERO ===================== -->
 <section class="hero">
   <div class="wrap hero-top">
-    <img class="hero-banner-img" src="images/hero-banner.jpg" alt="בובת כף יד על ערימת ערכות היצירה">
+    <video class="hero-banner-img" autoplay muted loop playsinline aria-label="סרטון באנר - בובת כף יד">
+      <source src="images/hero-banner.mp4" type="video/mp4">
+    </video>
     <div class="hero-heading">
       <span class="eyebrow">ערכת יצירה להכנת בובת כף יד</span>
       <h1>הרגע שבו <span>היצירה מתעוררת לחיים</span></h1>
