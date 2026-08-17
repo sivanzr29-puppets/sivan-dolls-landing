@@ -103,6 +103,9 @@
     .price-card .plan-features li{font-size:10.5px; gap:4px;}
     .price-card .plan-features li svg{width:12px; height:12px;}
     .price-card .card-cta{padding:9px 4px; font-size:11px;}
+    .price-card.compact .plan-unit,
+    .price-card.compact .plan-features{display:none;}
+    .price-card .mobile-hide-feature{display:none;}
   }
   .price-card{
     background:var(--brand-white); border-radius:var(--radius-lg);
@@ -548,72 +551,6 @@
   </div>
 </section>
 
-<!-- ===================== 3+4. PRICING + SHIPPING ===================== -->
-<section id="buy">
-  <div class="wrap">
-    <h2>כמה בובות תרצו ליצור?</h2>
-    <p class="section-sub">בחרו את המארז שמתאים לכם – כל ערכה מכילה את כל החומרים הדרושים להכנת בובת כף יד אחת.</p>
-
-    <div class="pricing-grid" id="pricingGrid">
-      <div class="price-card compact">
-        <p class="plan-name">3 ערכות</p>
-        <div class="plan-amount">171 ₪</div>
-        <p class="plan-unit">57 ₪ לערכה</p>
-        <p class="plan-desc">מתאים לאחים, חברים או לזמן יצירה משותף.</p>
-        <ul class="plan-features">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> דבק והוראות הכנה מצולמות</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל ילד יוצר בובה משלו</li>
-        </ul>
-        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 3</a>
-      </div>
-
-      <div class="price-card popular">
-        <span class="star-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          הבחירה המשפחתית
-        </span>
-        <p class="plan-name">12 ערכות</p>
-        <div class="plan-amount">660 ₪</div>
-        <p class="plan-unit">55 ₪ לערכה</p>
-        <p class="plan-desc">כשכולם רוצים להצטרף לחגיגה — מתאים למשפחה המורחבת, לאירוח או לקבוצה של ילדים.</p>
-        <ul class="plan-features">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מספיק ליצירה משותפת של קבוצה שלמה</li>
-        </ul>
-        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 12</a>
-      </div>
-
-      <div class="price-card">
-        <p class="plan-name">6 ערכות</p>
-        <div class="plan-amount">336 ₪</div>
-        <p class="plan-unit">56 ₪ לערכה</p>
-        <p class="plan-desc">מושלם למשפחה, לחברים ולזמן יצירה משותף.</p>
-        <ul class="plan-features">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> שש בובות שונות וייחודיות</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> יותר ילדים, יותר דמיון, יותר משחק</li>
-        </ul>
-        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 6</a>
-      </div>
-    </div>
-
-    <div class="ship-info">
-      <div class="shipping">
-        <div class="ship-opt selected" data-ship="delivery">
-          <div class="ship-label">🚚 משלוח עד הבית</div>
-          <div class="ship-price">55 ₪</div>
-        </div>
-        <div class="ship-opt" data-ship="pickup">
-          <div class="ship-label">🏠 איסוף עצמי</div>
-          <div class="ship-price">ללא עלות</div>
-        </div>
-      </div>
-      <p class="cta-sub">תשלום מאובטח באמצעות Grow • משלוחים לכל הארץ • ברכישה מאשרים את <a href="terms.html" style="color:var(--brand-primary-dark); text-decoration:underline;">תקנון ותנאי הרכישה</a></p>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== 9. HOW IT WORKS ===================== -->
 <section>
   <div class="wrap">
@@ -743,6 +680,72 @@
         <p>ערכות היצירה של "הבובות של סיון" נארזות באהבה במסגרת מפעל מוגן של האגודה לבריאות הציבור, על ידי אנשים עם מוגבלויות ומתמודדי נפש.</p>
         <p>כשאתם בוחרים ליצור עם "הבובות של סיון", אתם לא רק מכניסים הביתה פעילות יצירתית ומשמעותית. אתם גם לוקחים חלק בעשייה חברתית שמעניקה לאנשים הזדמנות אמיתית לעבוד, ליצור ולהרגיש שייכים.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3+4. PRICING + SHIPPING ===================== -->
+<section id="buy">
+  <div class="wrap">
+    <h2>כמה בובות תרצו ליצור?</h2>
+    <p class="section-sub">בחרו את המארז שמתאים לכם – כל ערכה מכילה את כל החומרים הדרושים להכנת בובת כף יד אחת.</p>
+
+    <div class="pricing-grid" id="pricingGrid">
+      <div class="price-card compact">
+        <p class="plan-name">3 ערכות</p>
+        <div class="plan-amount">171 ₪</div>
+        <p class="plan-unit">57 ₪ לערכה</p>
+        <p class="plan-desc">מתאים לאחים, חברים או לזמן יצירה משותף.</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> דבק והוראות הכנה מצולמות</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל ילד יוצר בובה משלו</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 3</a>
+      </div>
+
+      <div class="price-card popular">
+        <span class="star-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          הבחירה המשפחתית
+        </span>
+        <p class="plan-name">12 ערכות</p>
+        <div class="plan-amount">660 ₪</div>
+        <p class="plan-unit">55 ₪ לערכה</p>
+        <p class="plan-desc">כשכולם רוצים להצטרף לחגיגה — מתאים למשפחה המורחבת, לאירוח או לקבוצה של ילדים.</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מספיק ליצירה משותפת של קבוצה שלמה</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 12</a>
+      </div>
+
+      <div class="price-card">
+        <p class="plan-name">6 ערכות</p>
+        <div class="plan-amount">336 ₪</div>
+        <p class="plan-unit">56 ₪ לערכה</p>
+        <p class="plan-desc">מושלם למשפחה, לחברים ולזמן יצירה משותף.</p>
+        <ul class="plan-features">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> שש בובות שונות וייחודיות</li>
+          <li class="mobile-hide-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> יותר ילדים, יותר דמיון, יותר משחק</li>
+        </ul>
+        <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 6</a>
+      </div>
+    </div>
+
+    <div class="ship-info">
+      <div class="shipping">
+        <div class="ship-opt selected" data-ship="delivery">
+          <div class="ship-label">🚚 משלוח עד הבית</div>
+          <div class="ship-price">55 ₪</div>
+        </div>
+        <div class="ship-opt" data-ship="pickup">
+          <div class="ship-label">🏠 איסוף עצמי</div>
+          <div class="ship-price">ללא עלות</div>
+        </div>
+      </div>
+      <p class="cta-sub">תשלום מאובטח באמצעות Grow • משלוחים לכל הארץ • ברכישה מאשרים את <a href="terms.html" style="color:var(--brand-primary-dark); text-decoration:underline;">תקנון ותנאי הרכישה</a></p>
     </div>
   </div>
 </section>
