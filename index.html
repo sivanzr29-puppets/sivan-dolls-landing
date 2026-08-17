@@ -84,6 +84,14 @@
   @media (prefers-reduced-motion:reduce){ .hero-arrow svg{animation:none;} }
   .hero-below{padding-top:0; text-align:center;}
   .hero-below .lead{margin-bottom:18px;}
+  .mini-banner{position:relative; max-width:360px; margin:0 auto 18px; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-soft);}
+  .mini-banner video{width:100%; aspect-ratio:3/4; object-fit:cover; display:block;}
+  .mini-banner-text{
+    position:absolute; inset:0; margin:0; padding:16px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-weight:800; font-size:16px; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.4);
+    background:linear-gradient(to top, rgba(30,14,28,.6), rgba(30,14,28,.15) 55%, rgba(30,14,28,.35));
+  }
 
   /* ---------- pricing cards ---------- */
   .pricing-grid{
@@ -140,16 +148,16 @@
     .pricing-grid{grid-template-columns:1fr; gap:10px;}
     .price-card,
     .price-card.compact{
-      padding:14px 16px; flex-direction:row; flex-wrap:nowrap;
+      padding:20px 18px; flex-direction:row; flex-wrap:nowrap;
       align-items:center; justify-content:space-between; gap:10px;
     }
     .price-card .star-badge{display:none;}
-    .price-card .plan-name{font-size:15px; white-space:nowrap;}
-    .price-card .plan-amount{font-size:20px; margin:0; white-space:nowrap;}
-    .price-card .plan-unit{font-size:11px; margin:0; white-space:nowrap;}
+    .price-card .plan-name{font-size:17px; white-space:nowrap;}
+    .price-card .plan-amount{font-size:27px; margin:0; white-space:nowrap;}
+    .price-card .plan-unit{font-size:13px; margin:0; white-space:nowrap;}
     .price-card .plan-desc,
     .price-card .plan-features{display:none;}
-    .price-card .card-cta{width:auto; flex-shrink:0; padding:11px 16px; font-size:13px; margin-top:0; white-space:nowrap;}
+    .price-card .card-cta{width:auto; flex-shrink:0; padding:13px 18px; font-size:14px; margin-top:0; white-space:nowrap;}
   }
 
   /* shipping / payment info strip */
@@ -208,6 +216,8 @@
 
   /* ---------- video ---------- */
   .video-ph{width:100%; height:auto; max-width:760px; margin:0 auto; display:block;}
+  .making-of-video{max-width:380px;}
+  @media (max-width:700px){ .making-of-video{max-width:300px;} }
 
   /* ---------- reinforcement / storytelling ---------- */
   .story{background:var(--brand-bg-alt);}
@@ -492,7 +502,12 @@
   </div>
   <div class="wrap hero-below">
     <p class="lead">פשוט פותחים את הערכה, יוצרים בובה ייחודית ומגלים שהיצירה היא רק ההתחלה. כשהדבק מתייבש, הקסם רק מתחיל.</p>
-    <p class="lead" style="font-weight:700; color:var(--brand-ink); margin-inline:auto;">כל החומרים בפנים | בלי הכנות | ללא ניסיון קודם</p>
+    <div class="mini-banner">
+      <video autoplay muted loop playsinline poster="images/features-banner-poster.jpg" aria-label="כל החומרים בפנים | בלי הכנות | ללא ניסיון קודם">
+        <source src="images/features-banner.mp4" type="video/mp4">
+      </video>
+      <p class="mini-banner-text">כל החומרים בפנים | בלי הכנות | ללא ניסיון קודם</p>
+    </div>
     <a href="#buy" class="cta-btn" style="max-width:280px; margin:0 auto;">לבחירת מארז ורכישה</a>
   </div>
 </section>
@@ -590,7 +605,7 @@
 <section>
   <div class="wrap">
     <h2>איך נראית היצירה בפועל</h2>
-    <video class="video-ph" style="width:100%; max-width:380px; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata" poster="images/demo2-poster.jpg">
+    <video class="video-ph making-of-video" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata" poster="images/demo2-poster.jpg">
       <source src="images/demo2.mp4" type="video/mp4">
       הדפדפן שלך לא תומך בהצגת וידאו מובנית. <a href="images/demo2.mp4">לחצו כאן לצפייה בסרטון</a>
     </video>
