@@ -585,6 +585,9 @@
 <section style="background:var(--brand-bg-alt);">
   <div class="wrap" style="max-width:100%; padding:0;">
     <h2>ומה אומרים מי שכבר יצרו?</h2>
+    <div class="scroll-strip reviews-strip" style="margin-bottom:16px;">
+      <div class="scroll-track" id="reviewsTrack2" data-dir="reverse"></div>
+    </div>
     <div class="scroll-strip reviews-strip">
       <div class="scroll-track" id="reviewsTrack"></div>
     </div>
@@ -742,19 +745,22 @@
     cards.forEach(function(card){ observer.observe(card); });
   })();
 
-  // קרוסלת ביקורות - בונה את הכרטיסים לתוך ה-track (לפני אתחול הגלילה)
+  // קרוסלות ביקורות - בונה את הכרטיסים לתוך ה-tracks (לפני אתחול הגלילה)
   (function(){
-    // מערך הביקורות - קל להחליף בעתיד בביקורות אמיתיות
-    var reviews = [
+    // שתי מערכי ביקורות נפרדים - קל להחליף בעתיד בביקורות אמיתיות
+    var reviews1 = [
       { name: "לקוח/ה לדוגמה 1", username: "@customer1", text: "זהו טקסט ביקורת לדוגמה. יוחלף בביקורת אמיתית בהמשך." },
       { name: "לקוח/ה לדוגמה 2", username: "@customer2", text: "עוד ביקורת לדוגמה, עם אורך טקסט קצת שונה כדי לבדוק את העיצוב." },
       { name: "לקוח/ה לדוגמה 3", username: "@customer3", text: "ביקורת placeholder שלישית, מוכנה להחלפה בתוכן אמיתי בכל רגע." },
       { name: "לקוח/ה לדוגמה 4", username: "@customer4", text: "וביקורת רביעית לדוגמה, כדי לוודא שהלופ האינסופי עובד חלק." }
     ];
+    var reviews2 = [
+      { name: "לקוח/ה לדוגמה 5", username: "@customer5", text: "שורה שנייה של ביקורות, גוללת לכיוון ההפוך מהשורה הראשונה." },
+      { name: "לקוח/ה לדוגמה 6", username: "@customer6", text: "עוד ביקורת placeholder בשורה השנייה, מוכנה להחלפה." },
+      { name: "לקוח/ה לדוגמה 7", username: "@customer7", text: "ביקורת נוספת לדוגמה, כדי שהשורה תיראה מלאה ומגוונת." },
+      { name: "לקוח/ה לדוגמה 8", username: "@customer8", text: "וביקורת אחרונה לדוגמה בשורה השנייה." }
+    ];
     var avatarColors = ['#a8398f', '#4fc3c8', '#e0a63c', '#7f2a6d', '#5aa39c'];
-
-    var track = document.getElementById('reviewsTrack');
-    if(!track || !reviews.length) return;
 
     function escapeHTML(s){
       return String(s).replace(/[&<>"']/g, function(c){
@@ -762,24 +768,31 @@
       });
     }
 
-    reviews.forEach(function(r, i){
-      var item = document.createElement('div');
-      item.className = 'scroll-item';
-      var color = avatarColors[i % avatarColors.length];
-      var initial = escapeHTML((r.name || '?').trim().charAt(0));
-      item.innerHTML = '<div class="review-card">' +
-        '<div class="review-head">' +
-          '<div class="review-avatar" style="background:' + color + '">' + initial + '</div>' +
-          '<div><div class="review-name">' + escapeHTML(r.name) + '</div>' +
-          '<div class="review-username">' + escapeHTML(r.username) + '</div></div>' +
-        '</div>' +
-        '<p class="review-text">' + escapeHTML(r.text) + '</p>' +
-      '</div>';
-      track.appendChild(item);
-    });
+    function populate(trackId, reviews){
+      var track = document.getElementById(trackId);
+      if(!track || !reviews.length) return;
+      reviews.forEach(function(r, i){
+        var item = document.createElement('div');
+        item.className = 'scroll-item';
+        var color = avatarColors[i % avatarColors.length];
+        var initial = escapeHTML((r.name || '?').trim().charAt(0));
+        item.innerHTML = '<div class="review-card">' +
+          '<div class="review-head">' +
+            '<div class="review-avatar" style="background:' + color + '">' + initial + '</div>' +
+            '<div><div class="review-name">' + escapeHTML(r.name) + '</div>' +
+            '<div class="review-username">' + escapeHTML(r.username) + '</div></div>' +
+          '</div>' +
+          '<p class="review-text">' + escapeHTML(r.text) + '</p>' +
+        '</div>';
+        track.appendChild(item);
+      });
+    }
+
+    populate('reviewsTrack', reviews1);
+    populate('reviewsTrack2', reviews2);
   })();
 
-  // כל פסי הגלילה (תמונות + ביקורות) - לופ אינסופי (מדידת מיקום אמיתי ב-DOM)
+  // כל פסי הגלילה (תמונות + ביקורות) - לופ אינסופי (מדידת מיקום אמיתי ב-DOM), חלק מהם בכיוון הפוך
   document.querySelectorAll('.scroll-track').forEach(function(track){
     var orig = Array.from(track.children);
     var N = orig.length;
@@ -787,20 +800,27 @@
     for (var c = 0; c < 4; c++) {
       orig.forEach(function(el) { track.appendChild(el.cloneNode(true)); });
     }
-    var x = 0;
+    var reverse = track.getAttribute('data-dir') === 'reverse';
     var loopAt = 0;
+    var x = 0;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var speed = track.id === 'reviewsTrack' ? 0.5 : 0.8;
+    var speed = track.id === 'reviewsTrack' || track.id === 'reviewsTrack2' ? 0.5 : 0.8;
     function measure() {
       loopAt = track.children[N] ? track.children[N].offsetLeft : 0;
+      x = reverse ? -loopAt : 0;
     }
     if(reduceMotion) return;
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
         measure();
         (function tick() {
-          x -= speed;
-          if (loopAt > 0 && x <= -loopAt) x += loopAt;
+          if(reverse){
+            x += speed;
+            if (loopAt > 0 && x >= 0) x -= loopAt;
+          } else {
+            x -= speed;
+            if (loopAt > 0 && x <= -loopAt) x += loopAt;
+          }
           track.style.transform = 'translateX(' + x + 'px)';
           requestAnimationFrame(tick);
         })();
