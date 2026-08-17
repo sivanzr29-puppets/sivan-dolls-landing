@@ -524,11 +524,6 @@
     <p class="section-sub">בחרו כמה בובות תרצו ליצור</p>
     <div class="buybox">
       <div class="packages">
-        <div class="pkg" data-qty="1">
-          <div class="qty">1 בובה</div>
-          <div class="label">ליצירה אישית</div>
-          <div class="price">59₪</div>
-        </div>
         <div class="pkg" data-qty="3">
           <div class="qty">3 בובות</div>
           <div class="label">לזמן יצירה</div>
@@ -545,24 +540,12 @@
           <div class="label">לחגיגה קטנה</div>
           <div class="price">660₪ <br><small>55₪ ליחידה + מתנה</small></div>
         </div>
-        <div class="pkg" data-qty="24">
-          <div class="qty">24 בובות</div>
-          <div class="label">לחגיגה שלמה</div>
-          <div class="price">1272₪ <br><small>53₪ ליחידה + מתנה</small></div>
-        </div>
-        <div class="pkg" data-qty="36">
-          <span class="badge">הכי משתלם</span>
-          <div class="qty">36 בובות</div>
-          <div class="label">לחגיגה גדולה במיוחד</div>
-          <div class="price">1908₪ <br><small>53₪ ליחידה + מתנה</small></div>
-        </div>
       </div>
       <div class="shipping">
         <span>🚚 משלוח עד הבית</span>
         <span style="font-weight:700;">55₪</span>
       </div>
-      <!-- TODO: לחבר כאן את קישור ה-Payment Link הקבוע מ-Grow לפי החבילה שנבחרה -->
-      <a href="#" id="buyNowBtn" class="cta-btn">מוסיפים לסל ומתחילים ליצור 🧵</a>
+      <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" id="buyNowBtn" class="cta-btn" target="_blank" rel="noopener">מוסיפים לסל ומתחילים ליצור 🧵</a>
       <p class="cta-sub">תשלום מאובטח • משלוח לכל הארץ • בלחיצה על "מוסיפים לסל" מאשרים את <a href="terms.html" style="color:var(--brand-primary-dark); text-decoration:underline;">תקנון ותנאי הרכישה</a></p>
     </div>
   </div>
@@ -602,9 +585,6 @@
       el.classList.add('selected');
     });
   });
-
-  // TODO: לחבר את כפתורי "מוסיפים לסל" לקישור Payment Link הקבוע מ-Grow
-  // לדוגמה: document.getElementById('buyNowBtn').href = "https://pay.grow.link/xxxxx";
 
   // קו מסולסל שמצטייר תוך כדי גלילה בין 3 השלבים - עובר רק ברווח הפנוי, אף פעם לא על הכיתוב
   (function(){
