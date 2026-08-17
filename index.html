@@ -422,6 +422,30 @@
     50%{transform:scale(1.1);}
   }
   @media (prefers-reduced-motion:reduce){ .pulse-pink{animation:none;} }
+
+  /* headline: "עם חיים משלה" breaks to its own bigger, pink, pulsing line on mobile */
+  .headline-break{display:none;}
+  @media (max-width:700px){
+    .headline-break{display:inline;}
+    .headline-accent{
+      display:inline-block; font-size:1.2em; color:#ea6ea3;
+      animation:pulse-grow 1.8s ease-in-out infinite;
+    }
+  }
+  @media (max-width:700px) and (prefers-reduced-motion:reduce){ .headline-accent{animation:none;} }
+
+  /* trust icons: stacked, one per row, each in its own pulsing color, on mobile */
+  @media (max-width:700px){
+    .trust-block.c1{background:#fff;}
+    .trust-block .trust{flex-direction:column; align-items:center; gap:14px;}
+    .trust-block .trust-item{font-weight:800; animation:pulse-grow 1.8s ease-in-out infinite;}
+    .trust-block .trust-item .dot{background:currentColor;}
+    .trust-block .trust-item:nth-child(1){color:#8bbb45; animation-delay:0s;}
+    .trust-block .trust-item:nth-child(2){color:#f3963c; animation-delay:.15s;}
+    .trust-block .trust-item:nth-child(3){color:#55c1e4; animation-delay:.3s;}
+    .trust-block .trust-item:nth-child(4){color:#ea6ea3; animation-delay:.45s;}
+  }
+  @media (max-width:700px) and (prefers-reduced-motion:reduce){ .trust-block .trust-item{animation:none;} }
 </style>
 </head>
 <body>
@@ -458,7 +482,7 @@
 </section>
 
 <!-- ===================== 2. TRUST ICONS ===================== -->
-<div class="color-block c1">
+<div class="color-block c1 trust-block">
   <div class="trust">
     <div class="trust-item"><span class="dot"></span> למעלה מעשור של ניסיון</div>
     <div class="trust-item"><span class="dot"></span> מיוצר בישראל</div>
@@ -470,7 +494,7 @@
 <!-- ===================== 6. DEMO VIDEO ===================== -->
 <section>
   <div class="wrap">
-    <h2>מערכה אחת קטנה לבובה עם חיים משלה</h2>
+    <h2>מערכה אחת קטנה לבובה<br class="headline-break"><span class="headline-accent"> עם חיים משלה</span></h2>
     <video class="video-ph" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-soft); background:#000;" controls playsinline preload="metadata">
       <source src="images/demo.mp4" type="video/mp4">
       הדפדפן שלך לא תומך בהצגת וידאו מובנית. <a href="images/demo.mp4">לחצו כאן לצפייה בסרטון</a>
