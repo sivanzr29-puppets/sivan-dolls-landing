@@ -80,7 +80,7 @@
   /* ---------- pricing cards ---------- */
   .pricing-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
-    max-width:1000px; margin:0 auto 28px; align-items:start;
+    max-width:1000px; margin:0 auto 28px; align-items:stretch;
   }
   @media (max-width:860px){ .pricing-grid{grid-template-columns:1fr; max-width:420px;} }
   .price-card{
@@ -89,6 +89,7 @@
     padding:32px 24px; text-align:center; position:relative; overflow:hidden;
     opacity:0; transform:translateY(24px);
     transition:opacity .6s ease, transform .6s ease;
+    display:flex; flex-direction:column;
   }
   .price-card.in-view{opacity:1; transform:translateY(0);}
   .price-card.popular{
@@ -112,7 +113,7 @@
     display:block; width:100%; text-align:center; text-decoration:none;
     padding:13px; border-radius:999px; font-weight:800; font-size:15px;
     border:2px solid var(--brand-primary); color:var(--brand-primary-dark); background:transparent;
-    transition:.2s;
+    transition:.2s; margin-top:auto;
   }
   .price-card .card-cta:hover{background:var(--brand-bg-alt);}
   .price-card.popular .card-cta{
@@ -372,7 +373,6 @@
         <p class="plan-desc">כשכולם רוצים להצטרף לחגיגה — מתאים למשפחה המורחבת, לאירוח או לקבוצה של ילדים.</p>
         <ul class="plan-features">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> כל חומרי היצירה בפנים</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> המחיר המשתלם ביותר לערכה</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> מספיק ליצירה משותפת של קבוצה שלמה</li>
         </ul>
         <a href="https://pay.grow.link/MTE3MzE~b085022454a135642b15f19c5ca53717-Mzg1Mjg4NQ" class="card-cta" target="_blank" rel="noopener">אני רוצה מארז 12</a>
