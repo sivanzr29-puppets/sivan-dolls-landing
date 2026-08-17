@@ -324,6 +324,13 @@
   .faq summary::after{content:'+'; font-size:24px; font-weight:400; color:var(--brand-primary); flex-shrink:0; transition:transform .2s;}
   .faq details[open] summary::after{transform:rotate(45deg);}
   .faq p{font-size:15px; color:var(--brand-muted); padding-bottom:18px; line-height:1.7;}
+  .faq-more{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    background:var(--brand-white); border-radius:var(--radius-md);
+    box-shadow:var(--shadow-soft); padding:16px 20px;
+    font-weight:700; font-size:17px; color:var(--brand-ink); text-decoration:none;
+  }
+  .faq-more .arrow{color:var(--brand-primary); font-size:20px;}
   .faq-cta-row{text-align:center; margin-top:8px;}
 
   /* ---------- contact ---------- */
@@ -799,42 +806,10 @@
         <summary>צריך לדעת לתפור?</summary>
         <p>ממש לא. אין תפירה בכלל. הבובה מורכבת באמצעות הדבקה והוראות פשוטות וברורות.</p>
       </details>
-      <details>
-        <summary>צריך ניסיון ביצירה?</summary>
-        <p>לא. הערכה נבנתה כך שגם מי שלא מחשיב את עצמו "יצירתי" יכול ליהנות מהדרך ולהצליח.</p>
-      </details>
-      <details>
-        <summary>מה צריך להכין בבית?</summary>
-        <p>כמעט כלום. כל חומרי היצירה נמצאים בערכה. צריך רק זוג מספריים.</p>
-      </details>
-      <details>
-        <summary>כמה זמן לוקח להכין בובה?</summary>
-        <p>כ־30–45 דקות, בהתאם לגיל ולקצב היצירה.</p>
-      </details>
-      <details>
-        <summary>האם כל הבובות יוצאות אותו הדבר?</summary>
-        <p>ממש לא – וזה חלק מהקסם. מגוון השילובים מאפשר לכל ילד ליצור בובה ייחודית עם מראה ואופי משלה.</p>
-      </details>
-      <details>
-        <summary>אפשר לבחור את צבעי הבובה?</summary>
-        <p>כל ערכה היא הפתעה – וזה חלק מהקסם. הצבעים והשילובים מתגלים רק כשפותחים את הערכה. במארזים אנחנו דואגים לשילובים שונים, כך שכל בובה יוצאת אחרת וייחודית.</p>
-      </details>
-      <details>
-        <summary>מה עושים עם הבובה אחרי שמסיימים?</summary>
-        <p>פה מתחיל החלק שאנחנו הכי אוהבים. נותנים לבובה שם, קול ואופי – וממשיכים איתה למשחק, להצגות, לסיפורים ולמשחקי דמיון.</p>
-      </details>
-      <details>
-        <summary>איך מקבלים את ההזמנה?</summary>
-        <p>ניתן לבחור במשלוח עד הבית בעלות 55 ₪ או באיסוף עצמי ללא עלות.</p>
-      </details>
-      <details>
-        <summary>תוך כמה זמן ההזמנה מגיעה?</summary>
-        <p>זמן הטיפול בהזמנה הוא עד 7 ימי עסקים ממועד ההזמנה והתשלום, בתוספת זמן המשלוח בפועל של חברת השילוח. אנחנו יודעים שכבר ממש מתחשק לכם להתחיל, ואנחנו נעשה את המירב כדי שהחבילה תגיע בהקדם.</p>
-      </details>
-      <details>
-        <summary>רוצים להזמין כמות גדולה יותר?</summary>
-        <p>להזמנות גדולות, מוסדות, ארגונים ואירועים ניתן לפנות אלינו ישירות.</p>
-      </details>
+      <a class="faq-more" href="faq.html">
+        <span>יש לכם שאלות נוספות?</span>
+        <span class="arrow" aria-hidden="true">←</span>
+      </a>
     </div>
     <div class="faq-cta-row">
       <a class="contact-btn" href="https://wa.me/972523347960" target="_blank" rel="noopener" style="display:inline-flex;">💬 לשאלה בוואטסאפ</a>
